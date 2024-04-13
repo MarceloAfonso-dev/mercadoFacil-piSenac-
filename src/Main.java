@@ -13,15 +13,15 @@ public class Main {
 		switch (opcao) {
 		case 1, 2, 3 -> {
 
-			String doc, nome;
+			Empresa empresa1 = new Empresa();
 
 			System.out.println("Informe o numero de identidade:");
-			doc = ler.next();
+			empresa1.setCnpj(ler.next());
 			System.out.println("Informe o nome:");
-			nome = ler.nextLine();
+			empresa1.setNome(ler.next());
 
 			System.out.println("Dados recebidos");
-			System.out.println(nome + doc);
+			System.out.println(empresa1.getNome() +" "+empresa1.getCnpj());
 
 		}
 
