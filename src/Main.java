@@ -5,7 +5,7 @@ public class Main {
 
 		Scanner ler = new Scanner(System.in);
 		int opcao;
-
+		
 		System.out.println(
 				"Informe a opção desejada \n\n1. Cadastrar Empresa\n2. Cadastrar Funcionario \n3. Cadastrar Cliente \n4. Sair");
 		opcao = ler.nextInt();
