@@ -1,5 +1,6 @@
 public class Empresa {
-    private String nome, cnpj;
+    private String nome;
+    private String cnpj;
     private boolean cadastrado;
     
     public Empresa() {

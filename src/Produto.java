@@ -1,14 +1,14 @@
 public class Produto {
-	private int idProduto;
+	private String idProduto;
     private String nomeProduto;
     private int quantidadeProduto;
     private double valorProduto;
     private String categoriaProduto;
 	
-    public int getIdProduto() {
+    public String getIdProduto() {
 		return idProduto;
 	}
-	public void setIdProduto(int idProduto) {
+	public void setIdProduto(String idProduto) {
 		this.idProduto = idProduto;
 	}
 	public String getNomeProduto() {

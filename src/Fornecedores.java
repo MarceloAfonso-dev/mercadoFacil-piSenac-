@@ -1,4 +1,5 @@
 public class Fornecedores {
+	private String idFornecedor;
 	private String fornecedores;
     private String empresas;
     private String distribuicaoDeProdutos;
@@ -9,8 +10,13 @@ public class Fornecedores {
     private String industrias;
     private String laticinios;
     private String frigorificos;
-	
-    public String getFornecedores() {
+	public String getIdFornecedor() {
+		return idFornecedor;
+	}
+	public void setIdFornecedor(String idFornecedor) {
+		this.idFornecedor = idFornecedor;
+	}
+	public String getFornecedores() {
 		return fornecedores;
 	}
 	public void setFornecedores(String fornecedores) {
@@ -70,8 +76,7 @@ public class Fornecedores {
 	public void setFrigorificos(String frigorificos) {
 		this.frigorificos = frigorificos;
 	}
-    
-    
+	
     
 }
 	
