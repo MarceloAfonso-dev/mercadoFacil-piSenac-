@@ -1,8 +1,8 @@
 import java.util.Scanner;
 
 public class Main {
+	static Scanner leitor = new Scanner(System.in);
 	public static void main(String[] args) {
-		Scanner leitor = new Scanner(System.in);
 		Empresa empresa = new Empresa();
 		System.out.println("\r\n"
 				+ "  __  __                        _         ______ __       _ _ \r\n"
@@ -21,37 +21,42 @@ public class Main {
 			String cnpj = leitor.next();
 			empresa.cadastrarEmpresa(nome, cnpj);
 		}
+		clearConsole();
+		System.out.printf("""
+				%s
+				Seja bem vindo! Selecione o usuario:
+				1. Caixa
+				2. Gerente
+				3. Administrador
+				""",empresa.getNome());
+		int opcao = leitor.nextInt();
+		clearConsole();
 		
-		int opcao;
-		
-		System.out.println(
-				"Informe a opção desejada \n\n1. Cadastrar Empresa\n2. Cadastrar Funcionario \n3. Cadastrar Cliente \n4. Sair");
-		opcao = leitor.nextInt();
-
 		switch (opcao) {
-		case 1, 2, 3 -> {
-
-//			System.out.println("Informe o numero de identidade:");
-//			empresa1.setCnpj(leitor.next());
-//			System.out.println("Informe o nome:");
-//			empresa1.setNome(leitor.next());
-//
-//			System.out.println("Dados recebidos");
-//			System.out.println(empresa1.getNome() +" "+empresa1.getCnpj());
-
+		case 1 -> {
+			System.out.println("Olá caixa");
 		}
-
+		case 2 -> {
+			System.out.println("Olá gerente");
+		}
+		case 3 -> {
+			System.out.println("Olá administrador");
+		}
 		default -> {
 
 			if (opcao == 4) {
-				System.out.println("Saindo");
+				System.out.println("Encerrando sistema...");
 			}
 
 			else {
-				System.out.println("Opção invalida, por favor selecione outra opção.");
+				System.err.println("Opção invalida, por favor selecione outra opção.");
 			}
 
 		}
 		}
+	}
+	
+	public static void clearConsole() {
+		System.out.println("\n\n\n\n\n\n");
 	}
 }
