@@ -28,9 +28,9 @@ public class GerenciadorProduto {
                FileInputStream arquivo = new FileInputStream(new File(
                              GerenciadorProduto.fileName));
 
-               Workbook workbook = new XSSFWorkbook(arquivo);
+               XSSFWorkbook workbook = new XSSFWorkbook(arquivo);
 
-               XSSFSheet sheetProdutos = (XSSFSheet) workbook.getSheetAt(0);
+               XSSFSheet sheetProdutos = workbook.getSheetAt(0);
 
                Iterator<Row> rowIterator = sheetProdutos.iterator();
                
@@ -84,8 +84,8 @@ public class GerenciadorProduto {
     public static void editarProduto(String novoNome) throws IOException  {
         try {
             FileInputStream file = new FileInputStream(new File(GerenciadorProduto.fileName));
-            Workbook workbook = new XSSFWorkbook(file);
-            XSSFSheet sheetProdutos = (XSSFSheet) workbook.getSheetAt(0);
+            XSSFWorkbook workbook = new XSSFWorkbook(file);
+            XSSFSheet sheetProdutos = workbook.getSheetAt(0);
 
             // Alterar o nome do produto na primeira linha (ignorando o cabeçalho)
             Row row = sheetProdutos.getRow(1); // A linha 1 é a segunda linha, pois a contagem começa do 0
@@ -111,8 +111,8 @@ public class GerenciadorProduto {
     public static void imprimirProdutos() throws IOException {
         try {
             FileInputStream arquivo = new FileInputStream(new File(GerenciadorProduto.fileName));
-            Workbook workbook = new XSSFWorkbook(arquivo);
-            XSSFSheet sheetProdutos = (XSSFSheet) workbook.getSheetAt(0);
+            XSSFWorkbook workbook = new XSSFWorkbook(arquivo);
+            XSSFSheet sheetProdutos = workbook.getSheetAt(0);
 
             Iterator<Row> rowIterator = sheetProdutos.iterator();
             while (rowIterator.hasNext()) {
