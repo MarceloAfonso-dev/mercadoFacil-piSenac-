@@ -18,7 +18,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class GerenciadorProduto {
 
-    private static final String fileName = "src/resource/ExcelAsADatabaseMercadoFacil.xlsx";
+    private static final String fileName = ExcelLocalizacao.getFilename();
 
     public static void verificarQuantidadeProdutos() throws IOException {
     	   
