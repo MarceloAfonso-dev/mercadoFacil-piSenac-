@@ -1,8 +1,11 @@
+
+
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Main {
 	static Scanner leitor = new Scanner(System.in);
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		Empresa empresa = new Empresa();
 		System.out.println("\r\n"
 				+ "  __  __                        _         ______ __       _ _ \r\n"
@@ -35,6 +38,9 @@ public class Main {
 		switch (opcao) {
 		case 1 -> {
 			System.out.println("Olá caixa");
+//			GerenciadorProduto.editarProduto("Cola");
+			GerenciadorProduto.imprimirProdutos();
+			GerenciadorProduto.verificarQuantidadeProdutos();
 		}
 		case 2 -> {
 			System.out.println("Olá gerente");

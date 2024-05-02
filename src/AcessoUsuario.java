@@ -1,3 +1,5 @@
+
+
 public class AcessoUsuario {
 	private String idUsuario;
 	private int horarioLogin, horarioLogoff;
