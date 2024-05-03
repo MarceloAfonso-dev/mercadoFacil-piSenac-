@@ -38,7 +38,7 @@ public class Main {
 		switch (opcao) {
 		case 1 -> {
 			System.out.println("Olá caixa");
-			GerenciadorProduto.editarProduto("Cola");
+//			GerenciadorProduto.editarProduto("Cola");
 			GerenciadorProduto.imprimirProdutos();
 			GerenciadorProduto.verificarQuantidadeProdutos();
 		}
