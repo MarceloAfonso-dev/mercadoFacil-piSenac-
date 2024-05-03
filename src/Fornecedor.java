@@ -1,6 +1,6 @@
 
 
-public class Fornecedores {
+public class Fornecedor {
 	private String idFornecedor;
 	private String fornecedores;
     private String empresas;
