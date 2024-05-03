@@ -15,8 +15,13 @@
 			<version>3.10-FINAL</version>
 		</dependency>
 
-
 	</dependencies>
+	
+	<properties>
+        <maven.compiler.release>17</maven.compiler.release>
+        <maven.compiler.module>JavaSE17-jre</maven.compiler.module>
+    </properties>
+	
 	<build>
 		<sourceDirectory>src</sourceDirectory>
 		<resources>
@@ -32,7 +37,11 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.8.1</version>
 				<configuration>
-					<release>21</release>
+					<release>${maven.compiler.release}</release>
+                    <compilerArgs>
+                        <arg>--module-path</arg>
+                        <arg>${maven.compiler.module}</arg>
+                    </compilerArgs>
 				</configuration>
 			</plugin>
 		</plugins>
