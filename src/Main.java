@@ -3,6 +3,9 @@
 import java.io.IOException;
 import java.util.Scanner;
 
+import classes.Empresa;
+import gerenciadores.GerenciadorProduto;
+
 public class Main {
 	static Scanner leitor = new Scanner(System.in);
 	public static void main(String[] args) throws IOException {

@@ -1,3 +1,4 @@
+package classes;
 public class Funcionario {
 
 	private String nome;
