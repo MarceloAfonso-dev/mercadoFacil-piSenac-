@@ -21,7 +21,7 @@ import classes.Produto;
 
 public class GerenciadorProduto {
 
-    private static final String fileName = ExcelLocalizacao.getFilename();
+    static String fileName = ExcelLocalizacao.getFilename();
 
     public static void verificarQuantidadeProdutos() throws IOException {
     	   
