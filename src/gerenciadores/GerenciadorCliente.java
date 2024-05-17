@@ -20,6 +20,17 @@ import classes.Cliente;
 
 public class GerenciadorCliente {
 	
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
+
+//DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd"); // ajuste o padrão para corresponder ao formato da sua data
+//String dateString = cell.getStringCellValue();
+//LocalDate date = LocalDate.parse(dateString, formatter);
+//cliente.setDataNascimento(date);
+
+	
 	 static String fileName = ExcelLocalizacao.getFilename();
 	 
 	 public static void verificarQuantidadeCliente() throws IOException {
