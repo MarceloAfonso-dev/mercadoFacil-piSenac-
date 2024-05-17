@@ -1,38 +1,27 @@
 package gerenciadores;
 
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import classes.Cliente;
 
-public class GerenciadorCliente {
-	
-
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-
-
-//DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd"); // ajuste o padrão para corresponder ao formato da sua data
-//String dateString = cell.getStringCellValue();
-//LocalDate date = LocalDate.parse(dateString, formatter);
-//cliente.setDataNascimento(date);
-
+public class GerenciadorCliente  {
 	
 	 static String fileName = ExcelLocalizacao.getFilename();
-	 
+	 private static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
 	 public static void verificarQuantidadeCliente() throws IOException {
   	   
       List<Cliente> listaClientes = new ArrayList<Cliente>();
@@ -76,7 +65,9 @@ import java.time.format.DateTimeFormatter;
                        	 cliente.setTelefone(String.valueOf(cell.getStringCellValue()));
                               break;
                         case 5:
-                          	 cliente.setDataNascimento(String.valueOf(cell.getStringCellValue()));
+                        	 String dateString = String.valueOf(cell.getStringCellValue());
+                        	    LocalDate date = LocalDate.parse(dateString, formatter);
+                        	    cliente.setDataNascimento(date);
                                  break;     
                          
                         }
