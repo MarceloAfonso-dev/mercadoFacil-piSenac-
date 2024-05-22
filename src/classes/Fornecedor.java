@@ -3,84 +3,85 @@ package classes;
 
 public class Fornecedor {
 	private String idFornecedor;
-	private String fornecedores;
-    private String empresas;
-    private String distribuicaoDeProdutos;
-    private String controleDeVendas;
-    private int idDaEmpresa;
-    private String atacados;
-    private String varejos;
-    private String industrias;
-    private String laticinios;
-    private String frigorificos;
+	private String nomeFornecedor;
+	private String tipoComercio;
+	private String telefone;
+	private String endereco;
+	private String responsavel;
+	private String documento;
+	
+	public Fornecedor() {
+		
+	}
+
+	public Fornecedor(String idFornecedor, String nomeFornecedor, String tipoComercio, String telefone, String endereco,
+			String responsavel, String documento) {
+		super();
+		this.idFornecedor = idFornecedor;
+		this.nomeFornecedor = nomeFornecedor;
+		this.tipoComercio = tipoComercio;
+		this.telefone = telefone;
+		this.endereco = endereco;
+		this.responsavel = responsavel;
+		this.documento = documento;
+	}
+
 	public String getIdFornecedor() {
 		return idFornecedor;
 	}
+
 	public void setIdFornecedor(String idFornecedor) {
 		this.idFornecedor = idFornecedor;
 	}
-	public String getFornecedores() {
-		return fornecedores;
+
+	public String getNomeFornecedor() {
+		return nomeFornecedor;
 	}
-	public void setFornecedores(String fornecedores) {
-		this.fornecedores = fornecedores;
+
+	public void setNomeFornecedor(String nomeFornecedor) {
+		this.nomeFornecedor = nomeFornecedor;
 	}
-	public String getEmpresas() {
-		return empresas;
+
+	public String getTipoComercio() {
+		return tipoComercio;
 	}
-	public void setEmpresas(String empresas) {
-		this.empresas = empresas;
+
+	public void setTipoComercio(String tipoComercio) {
+		this.tipoComercio = tipoComercio;
 	}
-	public String getDistribuicaoDeProdutos() {
-		return distribuicaoDeProdutos;
+
+	public String getTelefone() {
+		return telefone;
 	}
-	public void setDistribuicaoDeProdutos(String distribuicaoDeProdutos) {
-		this.distribuicaoDeProdutos = distribuicaoDeProdutos;
+
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
 	}
-	public String getControleDeVendas() {
-		return controleDeVendas;
+
+	public String getEndereco() {
+		return endereco;
 	}
-	public void setControleDeVendas(String controleDeVendas) {
-		this.controleDeVendas = controleDeVendas;
+
+	public void setEndereco(String endereco) {
+		this.endereco = endereco;
 	}
-	public int getIdDaEmpresa() {
-		return idDaEmpresa;
+
+	public String getResponsavel() {
+		return responsavel;
 	}
-	public void setIdDaEmpresa(int idDaEmpresa) {
-		this.idDaEmpresa = idDaEmpresa;
+
+	public void setResponsavel(String responsavel) {
+		this.responsavel = responsavel;
 	}
-	public String getAtacados() {
-		return atacados;
+
+	public String getDocumento() {
+		return documento;
 	}
-	public void setAtacados(String atacados) {
-		this.atacados = atacados;
-	}
-	public String getVarejos() {
-		return varejos;
-	}
-	public void setVarejos(String varejos) {
-		this.varejos = varejos;
-	}
-	public String getIndustrias() {
-		return industrias;
-	}
-	public void setIndustrias(String industrias) {
-		this.industrias = industrias;
-	}
-	public String getLaticinios() {
-		return laticinios;
-	}
-	public void setLaticinios(String laticinios) {
-		this.laticinios = laticinios;
-	}
-	public String getFrigorificos() {
-		return frigorificos;
-	}
-	public void setFrigorificos(String frigorificos) {
-		this.frigorificos = frigorificos;
+
+	public void setDocumento(String documento) {
+		this.documento = documento;
 	}
 	
-    
 }
 	
 
