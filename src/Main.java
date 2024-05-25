@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.Scanner;
 
 import classes.Empresa;
+import gerenciadores.GerenciadorCompra;
 import gerenciadores.GerenciadorProduto;
 
 public class Main {
@@ -41,9 +42,14 @@ public class Main {
 		switch (opcao) {
 		case 1 -> {
 			System.out.println("Olá caixa");
+//PRODUTO
 //			GerenciadorProduto.editarProduto("Cola");
-			GerenciadorProduto.imprimirProdutos();
-			GerenciadorProduto.verificarQuantidadeProdutos();
+//			GerenciadorProduto.imprimirProdutos();
+//			GerenciadorProduto.verificarQuantidadeProdutos();
+			
+//COMPRA
+			GerenciadorCompra.imprimirCompras();
+			GerenciadorCompra.verificarQuantidadeCompras();
 		}
 		case 2 -> {
 			System.out.println("Olá gerente");

@@ -1,16 +1,16 @@
 package classes;
-import java.time.LocalDate;
+import java.util.Date;
 
 public class Compra {
 	private String idCompra;
 	private String idProduto;
-	private LocalDate dataSolicitacao;
+	private Date dataSolicitacao;
 	private double valorUnitario;
 	private String tipoUnidade;
 	private double valorTotal;
 	private double qtdeTotal;
 	private String idFornecedor;
-	private LocalDate previsaoEntrega;
+	private Date previsaoEntrega;
 	
 	public Compra() { }
 	
@@ -26,10 +26,10 @@ public class Compra {
 	public void setIdProduto(String idProduto) {
 		this.idProduto = idProduto;
 	}
-	public LocalDate getDataSolicitacao() {
+	public Date getDataSolicitacao() {
 		return dataSolicitacao;
 	}
-	public void setDataSolicitacao(LocalDate dataSolicitacao) {
+	public void setDataSolicitacao(Date dataSolicitacao) {
 		this.dataSolicitacao = dataSolicitacao;
 	}
 	public double getValorUnitario() {
@@ -62,10 +62,20 @@ public class Compra {
 	public void setIdFornecedor(String idFornecedor) {
 		this.idFornecedor = idFornecedor;
 	}
-	public LocalDate getPrevisaoEntrega() {
+	public Date getPrevisaoEntrega() {
 		return previsaoEntrega;
 	}
-	public void setPrevisaoEntrega(LocalDate previsaoEntrega) {
+	public void setPrevisaoEntrega(Date previsaoEntrega) {
 		this.previsaoEntrega = previsaoEntrega;
 	}
+
+	@Override
+	public String toString() {
+		return "Compra [idCompra=" + idCompra + ", idProduto=" + idProduto + ", dataSolicitacao=" + dataSolicitacao
+				+ ", valorUnitario=" + valorUnitario + ", tipoUnidade=" + tipoUnidade + ", valorTotal=" + valorTotal
+				+ ", qtdeTotal=" + qtdeTotal + ", idFornecedor=" + idFornecedor + ", previsaoEntrega=" + previsaoEntrega
+				+ "]";
+	}
+	
+	
 }
