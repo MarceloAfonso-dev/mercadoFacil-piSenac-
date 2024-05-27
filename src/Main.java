@@ -6,6 +6,7 @@ import java.util.Scanner;
 import classes.Empresa;
 import gerenciadores.GerenciadorCompra;
 import gerenciadores.GerenciadorProduto;
+import gerenciadores.GerenciadorUsuario;
 
 public class Main {
 	static Scanner leitor = new Scanner(System.in);
@@ -43,14 +44,16 @@ public class Main {
 		case 1 -> {
 			System.out.println("Olá caixa");
 //PRODUTO
-			GerenciadorProduto.imprimirProdutos();
-			GerenciadorProduto.verificarQuantidadeProdutos();
+//			GerenciadorProduto.imprimirProdutos();
+//			GerenciadorProduto.verificarQuantidadeProdutos();
 			
 //COMPRA
-//			GerenciadorCompra.imprimirCompras();
-//			GerenciadorCompra.verificarQuantidadeCompras();
+			GerenciadorCompra.imprimirCompras();
+			GerenciadorCompra.verificarQuantidadeCompras();
 			
-			
+//USUARIO
+//			GerenciadorUsuario.imprimirUsuarios();
+//			GerenciadorUsuario.verificarQuantidadeUsuarios();
 		}
 		case 2 -> {
 			System.out.println("Olá gerente");

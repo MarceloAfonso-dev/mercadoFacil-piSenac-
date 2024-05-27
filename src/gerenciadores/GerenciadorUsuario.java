@@ -5,30 +5,31 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Scanner;
 
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-import classes.Compra;
+import classes.Usuario;
 
-public class GerenciadorCompra {
-
+public class GerenciadorUsuario {
+	
+	static Scanner leitorInterno = new Scanner(System.in);
     static String fileName = ExcelLocalizacao.getFilename();
 
-    public static List<Compra> listarCompras() throws IOException {
-        List<Compra> listaCompras = new ArrayList<Compra>();
+    public static List<Usuario> listarUsuarios() throws IOException {
+        List<Usuario> listaUsuarios = new ArrayList<Usuario>();
 
         try {
             FileInputStream arquivo = new FileInputStream(new File(fileName));
             XSSFWorkbook workbook = new XSSFWorkbook(arquivo);
-            XSSFSheet sheetCompras = workbook.getSheetAt(8);
+            XSSFSheet sheetUsuarios = workbook.getSheetAt(12);
 
-            Iterator<Row> rowIterator = sheetCompras.iterator();
+            Iterator<Row> rowIterator = sheetUsuarios.iterator();
             
             while (rowIterator.hasNext()) {
                 Row row = rowIterator.next();
@@ -38,39 +39,34 @@ public class GerenciadorCompra {
                 }
                 Iterator<Cell> cellIterator = row.cellIterator();
 
-                Compra compra = new Compra();
-                listaCompras.add(compra);
+                Usuario usuario = new Usuario();
+                listaUsuarios.add(usuario);
                 while (cellIterator.hasNext()) {
                     Cell cell = cellIterator.next();
                     switch (cell.getColumnIndex()) {
                     case 0:
-                        compra.setIdCompra(String.valueOf(cell.getStringCellValue()));
+                        usuario.setIdUsuario(String.valueOf(cell.getStringCellValue()));
                         break;
                     case 1:
-                        compra.setIdProduto(String.valueOf(cell.getStringCellValue()));
+                        usuario.setNomeUsuario(String.valueOf(cell.getStringCellValue()));
                         break;
                     case 2:
-                        Date dataSolicitacao = cell.getDateCellValue();
-                        compra.setDataSolicitacao(dataSolicitacao);
+                        usuario.setEmailUsuario(String.valueOf(cell.getStringCellValue()));
                         break;
                     case 3:
-                        compra.setValorUnitario(cell.getNumericCellValue());
+                        usuario.setLoginUsuario(String.valueOf(cell.getStringCellValue()));
                         break;
                     case 4:
-                        compra.setTipoUnidade(String.valueOf(cell.getStringCellValue()));
+                        usuario.setSenhaUsuario(String.valueOf(cell.getStringCellValue()));
                         break;
                     case 5:
-                        compra.setValorTotal(cell.getNumericCellValue());
+                        usuario.setSituacao(String.valueOf(cell.getStringCellValue()));
                         break;
                     case 6:
-                        compra.setQtdeTotal((int) cell.getNumericCellValue());
+                        usuario.setCargo(String.valueOf(cell.getStringCellValue()));
                         break;
                     case 7:
-                        compra.setIdFornecedor(String.valueOf(cell.getStringCellValue()));
-                        break;
-                    case 8:
-                        Date dataEntrega = cell.getDateCellValue();
-                        compra.setPrevisaoEntrega(dataEntrega);
+                        usuario.setIdFuncionario(String.valueOf(cell.getStringCellValue()));
                         break;
                     }
                 }
@@ -80,31 +76,31 @@ public class GerenciadorCompra {
             e.printStackTrace();
             System.out.println("Arquivo Excel não encontrado!");
         }
-        return listaCompras;
+        return listaUsuarios;
     }
 
-    public static void verificarQuantidadeCompras() throws IOException {
-        List<Compra> listaCompras = listarCompras();
+    public static void verificarQuantidadeUsuarios() throws IOException {
+        List<Usuario> listaUsuarios = listarUsuarios();
         
-        if (listaCompras.size() == 0) {
-            System.out.println("Nenhuma compra encontrada!");
+        if (listaUsuarios.size() == 0) {
+            System.out.println("Nenhum usuário encontrado!");
         } else {
-            System.out.println("Número total de compras: " + listaCompras.size());
+            System.out.println("Número total de usuários: " + listaUsuarios.size());
         }
     }
 
-    public static void imprimirCompras() throws IOException {
-        List<Compra> listaCompras = listarCompras();
+    public static void imprimirUsuarios() throws IOException {
+        List<Usuario> listaUsuarios = listarUsuarios();
         
-        for (Compra compra : listaCompras) {
-            System.out.println(compra.toString());
+        for (Usuario usuario : listaUsuarios) {
+            System.out.println(usuario.toString());
         }
     }
 
     public static void main(String[] args) {
         try {
-            verificarQuantidadeCompras();
-            imprimirCompras();
+            verificarQuantidadeUsuarios();
+            imprimirUsuarios();
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -88,6 +88,12 @@ public class Usuario {
 	public void setIdFuncionario(String idFuncionario) {
 		this.idFuncionario = idFuncionario;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "Usuario [idUsuario=" + idUsuario + ", nomeUsuario=" + nomeUsuario + ", emailUsuario=" + emailUsuario
+				+ ", loginUsuario=" + loginUsuario + ", senhaUsuario=" + senhaUsuario + ", situacao=" + situacao
+				+ ", cargo=" + cargo + ", idFuncionario=" + idFuncionario + "]";
+	}
 	
 }
