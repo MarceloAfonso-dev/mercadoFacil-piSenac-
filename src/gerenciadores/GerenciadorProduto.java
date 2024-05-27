@@ -91,12 +91,4 @@ public class GerenciadorProduto {
         }
     }
 
-    public static void main(String[] args) {
-        try {
-            verificarQuantidadeProdutos();
-            imprimirProdutos();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 }

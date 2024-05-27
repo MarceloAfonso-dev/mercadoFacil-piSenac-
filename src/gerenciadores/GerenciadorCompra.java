@@ -101,12 +101,4 @@ public class GerenciadorCompra {
         }
     }
 
-    public static void main(String[] args) {
-        try {
-            verificarQuantidadeCompras();
-            imprimirCompras();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 }

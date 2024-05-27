@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 import classes.Empresa;
 import gerenciadores.GerenciadorCompra;
+import gerenciadores.GerenciadorLogin;
 import gerenciadores.GerenciadorProduto;
 import gerenciadores.GerenciadorUsuario;
 
@@ -32,45 +33,40 @@ public class Main {
 		clearConsole();
 		System.out.printf("""
 				%s
-				Seja bem vindo! Selecione o usuario:
-				1. Caixa
-				2. Gerente
-				3. Administrador
+				Seja bem vindo! Digite seu usuário e senha
 				""",empresa.getNome());
-		int opcao = leitor.nextInt();
 		clearConsole();
 		
-		switch (opcao) {
-		case 1 -> {
-			System.out.println("Olá caixa");
 //PRODUTO
-//			GerenciadorProduto.imprimirProdutos();
-//			GerenciadorProduto.verificarQuantidadeProdutos();
-			
+//		GerenciadorProduto.imprimirProdutos();
+//		GerenciadorProduto.verificarQuantidadeProdutos();
+		
 //COMPRA
+//		GerenciadorCompra.imprimirCompras();
+//		GerenciadorCompra.verificarQuantidadeCompras();
+		
+//USUARIO
+//		GerenciadorUsuario.imprimirUsuarios();
+//		GerenciadorUsuario.verificarQuantidadeUsuarios();
+		
+		switch (GerenciadorLogin.pegarLogin()) {
+		case "Caixa" -> {
+			System.out.println("Olá caixa");
+			GerenciadorProduto.imprimirProdutos();
+			GerenciadorProduto.verificarQuantidadeProdutos();
+		}
+		case "Gerente" -> {
+			System.out.println("Olá gerente");
 			GerenciadorCompra.imprimirCompras();
 			GerenciadorCompra.verificarQuantidadeCompras();
-			
-//USUARIO
-//			GerenciadorUsuario.imprimirUsuarios();
-//			GerenciadorUsuario.verificarQuantidadeUsuarios();
 		}
-		case 2 -> {
-			System.out.println("Olá gerente");
-		}
-		case 3 -> {
+		case "Administrador" -> {
 			System.out.println("Olá administrador");
+			GerenciadorUsuario.imprimirUsuarios();
+			GerenciadorUsuario.verificarQuantidadeUsuarios();
 		}
 		default -> {
-
-			if (opcao == 4) {
-				System.out.println("Encerrando sistema...");
-			}
-
-			else {
-				System.err.println("Opção invalida, por favor selecione outra opção.");
-			}
-
+			System.err.println("Encerrando Sistema!");
 		}
 		}
 	}

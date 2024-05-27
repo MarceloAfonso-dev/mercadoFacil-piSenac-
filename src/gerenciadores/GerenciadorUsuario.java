@@ -97,12 +97,4 @@ public class GerenciadorUsuario {
         }
     }
 
-    public static void main(String[] args) {
-        try {
-            verificarQuantidadeUsuarios();
-            imprimirUsuarios();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 }
