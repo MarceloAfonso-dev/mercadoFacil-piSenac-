@@ -58,12 +58,15 @@ public class GerenciadorProduto {
                             	 produto.setNome(String.valueOf(cell.getStringCellValue()));
                                    break;
                              case 2:
-                            	 produto.setQuantidade((int) cell.getNumericCellValue());
+                            	 produto.setCodigoDeBarras(String.valueOf(cell.getStringCellValue()));
                                    break;
                              case 3:
                             	 produto.setValor(cell.getNumericCellValue());
                                    break;
                              case 4:
+                            	 produto.setCategoria(String.valueOf(cell.getStringCellValue()));
+                                   break;
+                             case 5:
                             	 produto.setDescricao(String.valueOf(cell.getStringCellValue()));
                                    break;
                              }
@@ -104,21 +107,24 @@ public class GerenciadorProduto {
                 while (cellIterator.hasNext()) {
                     Cell cell = cellIterator.next();
                     switch (cell.getColumnIndex()) {
-                        case 0:
-                            produto.setIdProduto(String.valueOf(cell.getStringCellValue()));
-                            break;
-                        case 1:
-                            produto.setNome(String.valueOf(cell.getStringCellValue()));
-                            break;
-                        case 2:
-                            produto.setQuantidade((int) cell.getNumericCellValue());
-                            break;
-                        case 3:
-                            produto.setValor(cell.getNumericCellValue());
-                            break;
-                        case 4:
-                            produto.setDescricao(String.valueOf(cell.getStringCellValue()));
-                            break;
+                    	case 0:
+                    		produto.setIdProduto(String.valueOf(cell.getStringCellValue()));
+                    		break;
+                    	case 1:
+                    		produto.setNome(String.valueOf(cell.getStringCellValue()));
+                    		break;
+                    	case 2:
+                    		produto.setCodigoDeBarras(String.valueOf(cell.getStringCellValue()));
+                    		break;
+                    	case 3:
+                    		produto.setValor(cell.getNumericCellValue());
+                    		break;
+                    	case 4:
+                    		produto.setCategoria(String.valueOf(cell.getStringCellValue()));
+                    		break;
+                    	case 5:
+                    		produto.setDescricao(String.valueOf(cell.getStringCellValue()));
+                    		break;
                     }
                 }
                 System.out.println(produto.toString()); // Imprime os detalhes do produto
