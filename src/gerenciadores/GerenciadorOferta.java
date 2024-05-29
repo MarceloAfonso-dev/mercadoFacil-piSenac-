@@ -9,7 +9,6 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
-import classes.Compra;
 import classes.Oferta;
 
 import org.apache.poi.ss.usermodel.Cell;

@@ -1,9 +1,21 @@
 package classes;
 
+import java.util.Date;
+
 public class AcessoUsuario {
 
 	private String idUsuario;
-	private int horarioLogin, horarioLogoff;
+	private Date horarioLogin;
+	private Date horarioLogoff;
+
+	public AcessoUsuario() {  }
+
+	public AcessoUsuario(String idUsuario, Date horarioLogin, Date horarioLogoff) {
+		super();
+		this.idUsuario = idUsuario;
+		this.horarioLogin = horarioLogin;
+		this.horarioLogoff = horarioLogoff;
+	}
 
 	public String getIdUsuario() {
 		return idUsuario;
@@ -13,20 +25,26 @@ public class AcessoUsuario {
 		this.idUsuario = idUsuario;
 	}
 
-	public int getHorarioLogin() {
+	public Date getHorarioLogin() {
 		return horarioLogin;
 	}
 
-	public void setHorarioLogin(int horarioLogin) {
+	public void setHorarioLogin(Date horarioLogin) {
 		this.horarioLogin = horarioLogin;
 	}
 
-	public int getHorarioLogoff() {
+	public Date getHorarioLogoff() {
 		return horarioLogoff;
 	}
 
-	public void setHorarioLogoff(int horarioLogoff) {
+	public void setHorarioLogoff(Date horarioLogoff) {
 		this.horarioLogoff = horarioLogoff;
 	}
 
+	@Override
+	public String toString() {
+		return "AcessoUsuario [idUsuario=" + idUsuario + ", horarioLogin=" + horarioLogin + ", horarioLogoff="
+				+ horarioLogoff + "]";
+	}
+	
 }

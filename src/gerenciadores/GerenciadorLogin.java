@@ -1,13 +1,15 @@
 package gerenciadores;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
 import classes.Usuario;
 
 public class GerenciadorLogin {
-    
+    static SimpleDateFormat formatoData = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
     static private Scanner leitorInterno = new Scanner(System.in);
     
     public static String pegarLogin() {
@@ -21,6 +23,8 @@ public class GerenciadorLogin {
         try {
             if (validarLogin(login, senha)) {
                 System.out.println("Login bem-sucedido!");
+                Date dataHoraAtual = new Date();
+                GerenciadorLog.armazenaLog(GerenciadorLog.pegaLog(login, senha), dataHoraAtual);
                 return validarCargo(login, senha);
             } else {
                 System.out.println("Login ou senha incorretos!");
@@ -54,4 +58,5 @@ public class GerenciadorLogin {
         }
         return "inválido"; // Retorna "inválido" se login ou senha estão incorretos
     }
+    
 }
