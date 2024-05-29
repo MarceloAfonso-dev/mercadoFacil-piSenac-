@@ -6,22 +6,18 @@ public class Oferta {
     private String idOferta;
     private Date dataCriacao;
     private Date dataFim;
-    private double precoAntigo;
-    private double valorPromocional;
     private int qtdeMinima;
     private double percentualDesconto;
     private String idProduto;
     
     public Oferta() { }
 
-	public Oferta(String idOferta, Date dataCriacao, Date dataFim, double precoAntigo, double valorPromocional,
-			int qtdeMinima, double percentualDesconto, String idProduto) {
+	public Oferta(String idOferta, Date dataCriacao, Date dataFim, int qtdeMinima, double percentualDesconto,
+			String idProduto) {
 		super();
 		this.idOferta = idOferta;
 		this.dataCriacao = dataCriacao;
 		this.dataFim = dataFim;
-		this.precoAntigo = precoAntigo;
-		this.valorPromocional = valorPromocional;
 		this.qtdeMinima = qtdeMinima;
 		this.percentualDesconto = percentualDesconto;
 		this.idProduto = idProduto;
@@ -51,22 +47,6 @@ public class Oferta {
 		this.dataFim = dataFim;
 	}
 
-	public double getPrecoAntigo() {
-		return precoAntigo;
-	}
-
-	public void setPrecoAntigo(double precoAntigo) {
-		this.precoAntigo = precoAntigo;
-	}
-
-	public double getValorPromocional() {
-		return valorPromocional;
-	}
-
-	public void setValorPromocional(double valorPromocional) {
-		this.valorPromocional = valorPromocional;
-	}
-
 	public int getQtdeMinima() {
 		return qtdeMinima;
 	}
@@ -91,19 +71,11 @@ public class Oferta {
 		this.idProduto = idProduto;
 	}
 
-	public int getId() {
-		// TODO Auto-generated method stub
-		return 0;
-	} 
+	@Override
+	public String toString() {
+		return "Oferta [idOferta=" + idOferta + ", dataCriacao=" + dataCriacao + ", dataFim=" + dataFim
+				+ ", qtdeMinima=" + qtdeMinima + ", percentualDesconto=" + percentualDesconto + ", idProduto="
+				+ idProduto + "]";
+	}
     
-	
-    
-    	
-    	
-    	
-    
-    
-    
-    
-   
 }
