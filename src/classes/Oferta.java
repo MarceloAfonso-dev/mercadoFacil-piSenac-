@@ -1,58 +1,109 @@
 package classes;
-import java.time.LocalDate;
+
+import java.util.Date;
 
 public class Oferta {
-    private int idOferta;
-    private LocalDate dataCriacao;
-    private LocalDate dataFim;
+    private String idOferta;
+    private Date dataCriacao;
+    private Date dataFim;
     private double precoAntigo;
     private double valorPromocional;
     private int qtdeMinima;
     private double percentualDesconto;
-    private int idProduto;
+    private String idProduto;
     
-    public Oferta(int idOferta, LocalDate dataCriacao, LocalDate dataFim, double precoAntigo,
-                  double valorPromocional, int qtdeMinima, double percentualDesconto, int idProduto) {
-        this.idOferta = idOferta;
-        this.dataCriacao = dataCriacao;
-        this.dataFim = dataFim;
-        this.precoAntigo = precoAntigo;
-        this.valorPromocional = valorPromocional;
-        this.qtdeMinima = qtdeMinima;
-        this.percentualDesconto = percentualDesconto;
-        this.idProduto = idProduto;
-    }
+    public Oferta() { }
 
-    public int getIdOferta() {
-        return idOferta;
-    }
+	public Oferta(String idOferta, Date dataCriacao, Date dataFim, double precoAntigo, double valorPromocional,
+			int qtdeMinima, double percentualDesconto, String idProduto) {
+		super();
+		this.idOferta = idOferta;
+		this.dataCriacao = dataCriacao;
+		this.dataFim = dataFim;
+		this.precoAntigo = precoAntigo;
+		this.valorPromocional = valorPromocional;
+		this.qtdeMinima = qtdeMinima;
+		this.percentualDesconto = percentualDesconto;
+		this.idProduto = idProduto;
+	}
 
-    public LocalDate getDataCriacao() {
-        return dataCriacao;
-    }
+	public String getIdOferta() {
+		return idOferta;
+	}
 
-    public LocalDate getDataFim() {
-        return dataFim;
-    }
+	public void setIdOferta(String idOferta) {
+		this.idOferta = idOferta;
+	}
 
-    public double getPrecoAntigo() {
-        return precoAntigo;
-    }
+	public Date getDataCriacao() {
+		return dataCriacao;
+	}
 
-    public double getValorPromocional() {
-        return valorPromocional;
-    }
+	public void setDataCriacao(Date dataCriacao) {
+		this.dataCriacao = dataCriacao;
+	}
 
-    public int getQtdeMinima() {
-        return qtdeMinima;
-    }
+	public Date getDataFim() {
+		return dataFim;
+	}
 
-    public double getPercentualDesconto() {
-        return percentualDesconto;
-    }
+	public void setDataFim(Date dataFim) {
+		this.dataFim = dataFim;
+	}
 
-    public int getIdProduto() {
-        return idProduto;
-    }
+	public double getPrecoAntigo() {
+		return precoAntigo;
+	}
 
+	public void setPrecoAntigo(double precoAntigo) {
+		this.precoAntigo = precoAntigo;
+	}
+
+	public double getValorPromocional() {
+		return valorPromocional;
+	}
+
+	public void setValorPromocional(double valorPromocional) {
+		this.valorPromocional = valorPromocional;
+	}
+
+	public int getQtdeMinima() {
+		return qtdeMinima;
+	}
+
+	public void setQtdeMinima(int qtdeMinima) {
+		this.qtdeMinima = qtdeMinima;
+	}
+
+	public double getPercentualDesconto() {
+		return percentualDesconto;
+	}
+
+	public void setPercentualDesconto(double percentualDesconto) {
+		this.percentualDesconto = percentualDesconto;
+	}
+
+	public String getIdProduto() {
+		return idProduto;
+	}
+
+	public void setIdProduto(String idProduto) {
+		this.idProduto = idProduto;
+	}
+
+	public int getId() {
+		// TODO Auto-generated method stub
+		return 0;
+	} 
+    
+	
+    
+    	
+    	
+    	
+    
+    
+    
+    
+   
 }
