@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
@@ -14,22 +15,22 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-import classes.Funcionario;
+import classes.Estoque;
 
-public class GerenciadorFuncionario {
+public class GerenciadorEstoque {
 	
 	static Scanner leitorInterno = new Scanner(System.in);
     static String fileName = ExcelLocalizacao.getFilename();
 
-    public static List<Funcionario> listarFuncionarios() throws IOException {
-        List<Funcionario> listaFuncionarios = new ArrayList<Funcionario>();
+    public static List<Estoque> listarEstoques() throws IOException {
+        List<Estoque> listaEstoque = new ArrayList<Estoque>();
 
         try {
             FileInputStream arquivo = new FileInputStream(new File(fileName));
             XSSFWorkbook workbook = new XSSFWorkbook(arquivo);
-            XSSFSheet sheetFuncionario = workbook.getSheetAt(11);
+            XSSFSheet sheetEstoques = workbook.getSheetAt(1);
 
-            Iterator<Row> rowIterator = sheetFuncionario.iterator();
+            Iterator<Row> rowIterator = sheetEstoques.iterator();
             
             while (rowIterator.hasNext()) {
                 Row row = rowIterator.next();
@@ -39,31 +40,30 @@ public class GerenciadorFuncionario {
                 }
                 Iterator<Cell> cellIterator = row.cellIterator();
 
-                Funcionario funcionario = new Funcionario();
-                listaFuncionarios.add(funcionario);
+                Estoque estoque = new Estoque();
+                listaEstoque.add(estoque);
                 while (cellIterator.hasNext()) {
                     Cell cell = cellIterator.next();
                     switch (cell.getColumnIndex()) {
                     case 0:
-                        funcionario.setIdFuncionario(String.valueOf(cell.getStringCellValue()));
+                        estoque.setIdProduto(String.valueOf(cell.getStringCellValue()));
                         break;
                     case 1:
-                        funcionario.setNome(String.valueOf(cell.getStringCellValue()));
+                        estoque.setQuantidade(cell.getNumericCellValue());
                         break;
                     case 2:
-                        funcionario.setCpf(String.valueOf(cell.getStringCellValue()));
+                        estoque.setIdLote(String.valueOf(cell.getStringCellValue()));
                         break;
                     case 3:
-                        funcionario.setSalario(cell.getNumericCellValue());
+                    	Date validade = cell.getDateCellValue();
+                        estoque.setDataValidade(validade);
                         break;
                     case 4:
-                        funcionario.setCargoSetor(String.valueOf(cell.getStringCellValue()));
+                    	Date entrada = cell.getDateCellValue();
+                        estoque.setDataEntrada(entrada);
                         break;
                     case 5:
-                        funcionario.setSituacao(String.valueOf(cell.getStringCellValue()));
-                        break;
-                    case 6:
-                        funcionario.setEmail(String.valueOf(cell.getStringCellValue()));
+                        estoque.setCusto(cell.getNumericCellValue());
                         break;
                     }
                 }
@@ -73,25 +73,24 @@ public class GerenciadorFuncionario {
             e.printStackTrace();
             System.out.println("Arquivo Excel não encontrado!");
         }
-        return listaFuncionarios;
+        return listaEstoque;
     }
 
-    public static void verificarQuantidadeFuncionarios() throws IOException {
-        List<Funcionario> listaFuncionarios = listarFuncionarios();
+    public static void verificarQuantidadeEstoque() throws IOException {
+        List<Estoque> listaEstoque = listarEstoques();
         
-        if (listaFuncionarios.size() == 0) {
-            System.out.println("Nenhum funcionário encontrado!");
+        if (listaEstoque.size() == 0) {
+            System.out.println("Nenhum estoque encontrado!");
         } else {
-            System.out.println("Número total de funcionários: " + listaFuncionarios.size());
+            System.out.println("Número total de estoque: " + listaEstoque.size());
         }
     }
 
-    public static void imprimirFuncionarios() throws IOException {
-        List<Funcionario> listaFuncionarios = listarFuncionarios();
+    public static void imprimirEstoque() throws IOException {
+        List<Estoque> listaEstoque = listarEstoques();
         
-        for (Funcionario funcionario : listaFuncionarios) {
-            System.out.println(funcionario.toString());
+        for (Estoque estoque : listaEstoque) {
+            System.out.println(estoque.toString());
         }
     }
-
 }

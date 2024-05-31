@@ -1,20 +1,18 @@
 package classes;
 
-import java.time.LocalDate;
+import java.util.Date;
 
 public class Estoque {
 	private String idProduto;
-	private int quantidade;
-	private int idLote;
-	private LocalDate dataValidade;
-	private LocalDate dataEntrada;
+	private double quantidade;
+	private String idLote;
+	private Date dataValidade;
+	private Date dataEntrada;
 	private double custo;
 	
-	public Estoque() {
-		
-	}
+	public Estoque() {	}
 	
-	public Estoque(String idProduto, int quantidade, int idLote, LocalDate dataValidade, LocalDate dataEntrada,
+	public Estoque(String idProduto, double quantidade, String idLote, Date dataValidade, Date dataEntrada,
 			double custo) {
 		super();
 		this.idProduto = idProduto;
@@ -33,35 +31,35 @@ public class Estoque {
 		this.idProduto = idProduto;
 	}
 
-	public int getQuantidade() {
+	public double getQuantidade() {
 		return quantidade;
 	}
 
-	public void setQuantidade(int quantidade) {
+	public void setQuantidade(double quantidade) {
 		this.quantidade = quantidade;
 	}
 
-	public int getIdLote() {
+	public String getIdLote() {
 		return idLote;
 	}
 
-	public void setIdLote(int idLote) {
+	public void setIdLote(String idLote) {
 		this.idLote = idLote;
 	}
 
-	public LocalDate getDataValidade() {
+	public Date getDataValidade() {
 		return dataValidade;
 	}
 
-	public void setDataValidade(LocalDate dataValidade) {
+	public void setDataValidade(Date dataValidade) {
 		this.dataValidade = dataValidade;
 	}
 
-	public LocalDate getDataEntrada() {
+	public Date getDataEntrada() {
 		return dataEntrada;
 	}
 
-	public void setDataEntrada(LocalDate dataEntrada) {
+	public void setDataEntrada(Date dataEntrada) {
 		this.dataEntrada = dataEntrada;
 	}
 
@@ -72,6 +70,11 @@ public class Estoque {
 	public void setCusto(double custo) {
 		this.custo = custo;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "Estoque [idProduto=" + idProduto + ", quantidade=" + quantidade + ", idLote=" + idLote
+				+ ", dataValidade=" + dataValidade + ", dataEntrada=" + dataEntrada + ", custo=" + custo + "]";
+	}
 	
 }
