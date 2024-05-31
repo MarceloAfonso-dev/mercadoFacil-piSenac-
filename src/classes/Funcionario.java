@@ -9,6 +9,22 @@ public class Funcionario {
 	private String situacao;
 	private String email;
 	
+	public Funcionario() {  }
+	
+	public Funcionario(String nome, String idFuncionario, String cpf, double salario, String cargoSetor,
+			String situacao, String email) {
+		super();
+		this.nome = nome;
+		this.idFuncionario = idFuncionario;
+		this.cpf = cpf;
+		this.salario = salario;
+		this.cargoSetor = cargoSetor;
+		this.situacao = situacao;
+		this.email = email;
+	}
+
+
+
 	public String getNome() {
 		return nome;
 	}
@@ -51,6 +67,11 @@ public class Funcionario {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "Funcionario [nome=" + nome + ", idFuncionario=" + idFuncionario + ", cpf=" + cpf + ", salario="
+				+ salario + ", cargoSetor=" + cargoSetor + ", situacao=" + situacao + ", email=" + email + "]";
+	}
 	
 }

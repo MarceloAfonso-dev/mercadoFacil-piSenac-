@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 import classes.Empresa;
 import gerenciadores.GerenciadorCompra;
+import gerenciadores.GerenciadorFuncionario;
 import gerenciadores.GerenciadorLogin;
 import gerenciadores.GerenciadorOferta;
 import gerenciadores.GerenciadorProduto;
@@ -53,6 +54,10 @@ public class Main {
 //OFERTA
 //		GerenciadorOferta.imprimirOfertas();
 //		GerenciadorOferta.verificarQuantidadeOfertas();
+		
+//FUNCIONARIO
+		GerenciadorFuncionario.imprimirFuncionarios();
+		GerenciadorFuncionario.verificarQuantidadeFuncionarios();
 		
 		switch (GerenciadorLogin.pegarLogin()) {
 		case "Caixa" -> {
