@@ -3,19 +3,15 @@
 import java.io.IOException;
 import java.util.Scanner;
 
-import classes.Empresa;
 import gerenciadores.GerenciadorCompra;
-import gerenciadores.GerenciadorEstoque;
-import gerenciadores.GerenciadorFuncionario;
+import gerenciadores.GerenciadorEmpresa;
 import gerenciadores.GerenciadorLogin;
-import gerenciadores.GerenciadorOferta;
 import gerenciadores.GerenciadorProduto;
 import gerenciadores.GerenciadorUsuario;
 
 public class Main {
 	static Scanner leitor = new Scanner(System.in);
 	public static void main(String[] args) throws IOException {
-		Empresa empresa = new Empresa();
 		System.out.println("\r\n"
 				+ "  __  __                        _         ______ __       _ _ \r\n"
 				+ " |  \\/  |                      | |       |  ____/_/      (_) |\r\n"
@@ -27,18 +23,9 @@ public class Main {
 				+ "                                                              \r\n"
 				+ "");
 		
-		if (!empresa.isCadastrado()) {
-			System.out.println("Seja bem vindo!\nInsira o nome e CNPJ da empresa:");
-			String nome = leitor.nextLine();
-			String cnpj = leitor.next();
-			empresa.cadastrarEmpresa(nome, cnpj);
-		}
+		GerenciadorEmpresa.verificaEmpresa();
 		clearConsole();
-		System.out.printf("""
-				%s
-				Seja bem vindo! Digite seu usuário e senha
-				""",empresa.getNome());
-		clearConsole();
+
 		
 //PRODUTO
 //		GerenciadorProduto.imprimirProdutos();

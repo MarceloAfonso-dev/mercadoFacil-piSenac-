@@ -12,8 +12,8 @@ public class GerenciadorLogin {
     static SimpleDateFormat formatoData = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
     static private Scanner leitorInterno = new Scanner(System.in);
     
-    public static String pegarLogin() {
-    	
+    public static String pegarLogin() throws IOException {
+		System.out.println(GerenciadorEmpresa.pegaNome());
         System.out.println("Digite seu login: ");
         String login = leitorInterno.nextLine();
         

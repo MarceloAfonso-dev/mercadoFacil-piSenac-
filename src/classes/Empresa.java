@@ -4,21 +4,22 @@ package classes;
 public class Empresa {
     private String nome;
     private String cnpj;
+    private String endereco;
+    private String telefone;
     private boolean cadastrado;
     
     public Empresa() {
     	this.cadastrado = false;
     }
-
-    public void cadastrarEmpresa(String nome, String cnpj) {
-    	this.nome = nome;
-    	this.cnpj = cnpj;
-    	this.cadastrado = true;
-    }
     
-    public boolean isCadastrado() {
-    	return cadastrado;
-    }
+    public Empresa(String nome, String cnpj, String endereco, String telefone, boolean cadastrado) {
+		super();
+		this.nome = nome;
+		this.cnpj = cnpj;
+		this.endereco = endereco;
+		this.telefone = telefone;
+		this.cadastrado = cadastrado;
+	}
 
 	public String getNome() {
 		return nome;
@@ -35,6 +36,29 @@ public class Empresa {
 	public void setCnpj(String cnpj) {
 		this.cnpj = cnpj;
 	}
-    
+
+	public String getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(String endereco) {
+		this.endereco = endereco;
+	}
+
+	public String getTelefone() {
+		return telefone;
+	}
+
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
+	}
+
+	public boolean isCadastrado() {
+		return cadastrado;
+	}
+
+	public void setCadastrado(boolean cadastrado) {
+		this.cadastrado = cadastrado;
+	}
     
 }
