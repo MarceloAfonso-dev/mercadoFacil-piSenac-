@@ -60,5 +60,12 @@ public class Empresa {
 	public void setCadastrado(boolean cadastrado) {
 		this.cadastrado = cadastrado;
 	}
-    
+
+	@Override
+	public String toString() {
+		return "Empresa [nome=" + nome + ", cnpj=" + cnpj + ", endereco=" + endereco + ", telefone=" + telefone
+				+ ", cadastrado=" + cadastrado + "]";
+	}
+
+	
 }

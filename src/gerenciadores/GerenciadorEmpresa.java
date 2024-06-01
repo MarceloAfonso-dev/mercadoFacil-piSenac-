@@ -16,7 +16,6 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import classes.Empresa;
-import classes.Usuario;
 
 public class GerenciadorEmpresa {
 	static Empresa empresa = new Empresa();
@@ -85,6 +84,14 @@ public class GerenciadorEmpresa {
         return listaEmpresa;
     }
     
+    public static void imprimirEmpresa() throws IOException {
+        List<Empresa> listaEmpresa = listarEmpresa();
+        
+        for (Empresa empresa : listaEmpresa) {
+            System.out.println(empresa.toString());
+        }
+    }
+    
     public static void verificaEmpresa() throws IOException {
         List<Empresa> listaEmpresa = listarEmpresa();
         
@@ -95,17 +102,20 @@ public class GerenciadorEmpresa {
         }
         
         if (listaEmpresa.isEmpty()) {
-        	System.out.println("Seja bem vindo!\nInsira o nome e CNPJ da empresa:");
-        	String nome = leitorInterno.nextLine();
-        	String cnpj = leitorInterno.nextLine();
-        	System.out.println("Agora digite seu endereco e telefone");
-        	String endereco = leitorInterno.nextLine();
-        	String telefone = leitorInterno.nextLine();
-        	
-        	armazenaEmpresa(nome, cnpj, endereco, telefone);
+        	alterarDados();
         }
     }
 
+    public static void alterarDados() {
+    	System.out.println("Seja bem vindo!\nInsira o nome e CNPJ da empresa:");
+    	String nome = leitorInterno.nextLine();
+    	String cnpj = leitorInterno.nextLine();
+    	System.out.println("Agora digite seu endereco e telefone");
+    	String endereco = leitorInterno.nextLine();
+    	String telefone = leitorInterno.nextLine();
+    	
+    	armazenaEmpresa(nome, cnpj, endereco, telefone);
+    }
     
     private static void armazenaEmpresa(String nome, String cnpj, String endereco, String telefone) {
         FileInputStream arquivo = null;
