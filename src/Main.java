@@ -33,7 +33,7 @@ public class Main {
 
         do {
             System.out.println("""
-                    Insira a opção desejada
+                    \nInsira a opção desejada
                     0. Encerrar Sistema
                     1. Fazer Login
                         """);
@@ -47,32 +47,32 @@ public class Main {
                     String idFuncionario = usuarioLogado.getIdFuncionario();
                     switch (cargo) {
                     case "Caixa" -> {
-                        System.out.println("Olá caixa");
+                        System.out.println("\nOlá caixa");
                         GerenciadorProduto.imprimirProdutos();
                         GerenciadorProduto.verificarQuantidadeProdutos();
                     }
                     case "Gerente" -> {
-                        System.out.println("Olá gerente");
+                        System.out.println("\nOlá gerente");
                         GerenciadorMeta.imprimirMetasGerais();
                         GerenciadorMeta.imprimirMetasPorIdFuncionario(idFuncionario);
                     }
                     case "Administrador" -> {
-                        System.out.println("Olá administrador");
+                        System.out.println("\nOlá administrador");
                         acoesAdministrador();
                     }
                     default -> {
-                        System.err.println("Usuário Inválido");
+                        System.err.println("\nUsuário Inválido\n");
                     }
                     }
                 } else {
-                    System.err.println("Login inválido");
+                    System.err.println("\nLogin inválido\n");
                 }
             }
             case 0 -> {
                 System.err.println("Encerrando Sistema...");
             }
             default -> {
-                System.err.println("Opção Inválida!");
+                System.err.println("\nOpção Inválida!\n");
             }
             }
         } while (opcao != 0);
@@ -82,7 +82,7 @@ public class Main {
         int opcao = 0;
         int opcaoInterna = 0;
         System.out.println("""
-                Escolha qual item deseja acessar:
+                \nEscolha qual item deseja acessar:
                 0. Sair
                 1. Usuário
                 2. Compra
@@ -95,7 +95,7 @@ public class Main {
             switch (opcao) {
             case 1 -> {
                 System.out.println("""
-                        Selecione a ação desejada:
+                        \nSelecione a ação desejada:
                         1. Consultar quantidade de usuários
                         2. Exibir todos os usuários
                         """);
@@ -109,13 +109,13 @@ public class Main {
                     GerenciadorUsuario.imprimirUsuarios();
                 }
                 default -> {
-                    System.err.println("Opção Inválida!");
+                    System.err.println("\nOpção Inválida!\n");
                 }
                 }
             }
             case 2 -> {
                 System.out.println("""
-                        Selecione a ação desejada:
+                        \nSelecione a ação desejada:
                         1. Consultar quantidade de compras
                         2. Exibir todos os compras
                         """);
@@ -129,13 +129,13 @@ public class Main {
                     GerenciadorCompra.imprimirCompras();
                 }
                 default -> {
-                    System.err.println("Opção Inválida!");
+                    System.err.println("\nOpção Inválida!\n");
                 }
                 }
             }
             case 3 -> {
                 System.out.println("""
-                        Selecione a ação desejada:
+                        \nSelecione a ação desejada:
                         1. Consultar quantidade de forncedores
                         2. Exibir todos os fornecedores
                         """);
@@ -149,13 +149,13 @@ public class Main {
                 	GerenciadorFornecedor.imprimirFornecedores();
                 }
                 default -> {
-                    System.err.println("Opção Inválida!");
+                    System.err.println("\nOpção Inválida!\n");
                 }
                 }
             }
             case 4 -> {
                 System.out.println("""
-                        Selecione a ação desejada:
+                        \nSelecione a ação desejada:
                         1. Consultar quantidade de empresas
                         2. Exibir todas as empresas
                         """);
@@ -169,30 +169,21 @@ public class Main {
                     GerenciadorEmpresa.imprimirEmpresa();
                 }
                 default -> {
-                    System.err.println("Opção Inválida!");
+                    System.err.println("\nOpção Inválida!\n");
                 }
                 }
             }
             case 0 -> {
-                System.err.println("Voltando ao menu principal...");
+                System.err.println("\n\nVoltando ao menu principal...\n");
             }
             default -> {
-                System.err.println("Opção Inválida!");
+                System.err.println("\nOpção Inválida!\n");
             }
             }
         } while (opcao != 0);
     }
 
     public static void clearConsole() {
-        try {
-            if (System.getProperty("os.name").contains("Windows")) {
-                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
-            } else {
-                System.out.print("\033[H\033[2J");
-                System.out.flush();
-            }
-        } catch (IOException | InterruptedException ex) {
-            System.out.println("Erro ao limpar o console.");
-        }
+    	System.out.println("\n\n\n\n\n");
     }
 }
