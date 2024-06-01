@@ -3,6 +3,7 @@ import java.util.Scanner;
 
 import gerenciadores.GerenciadorCompra;
 import gerenciadores.GerenciadorEmpresa;
+import gerenciadores.GerenciadorFornecedor;
 import gerenciadores.GerenciadorLogin;
 import gerenciadores.GerenciadorProduto;
 import gerenciadores.GerenciadorUsuario;
@@ -49,6 +50,10 @@ public class Main {
 //ESTOQUE
 //		GerenciadorEstoque.imprimirEstoque();
 //		GerenciadorEstoque.verificarQuantidadeEstoque();
+		
+//FORNECEDORES
+//		GerenciadorFornecedor.imprimirFornecedores();
+//		GerenciadorFornecedor.verificarQuantidadeFornecedores();
 		
 		int opcao = 1;
 		
@@ -160,14 +165,10 @@ public class Main {
 				int opcaoInterna = leitor.nextInt();
 				switch(opcaoInterna) {
 				case 1 -> {
-					//
-					//FORNECEDORES
-					//
+					GerenciadorFornecedor.verificarQuantidadeFornecedores();
 				}
 				case 2 -> {
-					//
-					//FORNECEDORES
-					//
+					GerenciadorFornecedor.imprimirFornecedores();
 				}
 				case 0 -> {
 					// Voltar ao menu anterior

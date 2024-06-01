@@ -10,9 +10,7 @@ public class Fornecedor {
 	private String responsavel;
 	private String documento;
 	
-	public Fornecedor() {
-		
-	}
+	public Fornecedor() {	}
 
 	public Fornecedor(String idFornecedor, String nomeFornecedor, String tipoComercio, String telefone, String endereco,
 			String responsavel, String documento) {
@@ -81,7 +79,12 @@ public class Fornecedor {
 	public void setDocumento(String documento) {
 		this.documento = documento;
 	}
-	
-}
-	
 
+	@Override
+	public String toString() {
+		return "Fornecedor [idFornecedor=" + idFornecedor + ", nomeFornecedor=" + nomeFornecedor + ", tipoComercio="
+				+ tipoComercio + ", telefone=" + telefone + ", endereco=" + endereco + ", responsavel=" + responsavel
+				+ ", documento=" + documento + "]";
+	}
+
+}
