@@ -30,7 +30,7 @@ public class GerenciadorUsuario {
             XSSFSheet sheetUsuarios = workbook.getSheetAt(12);
 
             Iterator<Row> rowIterator = sheetUsuarios.iterator();
-            
+
             while (rowIterator.hasNext()) {
                 Row row = rowIterator.next();
                 if (row.getRowNum() == 0) {
@@ -40,35 +40,63 @@ public class GerenciadorUsuario {
                 Iterator<Cell> cellIterator = row.cellIterator();
 
                 Usuario usuario = new Usuario();
-                listaUsuarios.add(usuario);
+                boolean cellHasValue = false; // Flag para verificar se a célula não é nula
                 while (cellIterator.hasNext()) {
                     Cell cell = cellIterator.next();
                     switch (cell.getColumnIndex()) {
-                    case 0:
-                        usuario.setIdUsuario(String.valueOf(cell.getStringCellValue()));
-                        break;
-                    case 1:
-                        usuario.setNomeUsuario(String.valueOf(cell.getStringCellValue()));
-                        break;
-                    case 2:
-                        usuario.setEmailUsuario(String.valueOf(cell.getStringCellValue()));
-                        break;
-                    case 3:
-                        usuario.setLoginUsuario(String.valueOf(cell.getStringCellValue()));
-                        break;
-                    case 4:
-                        usuario.setSenhaUsuario(String.valueOf(cell.getStringCellValue()));
-                        break;
-                    case 5:
-                        usuario.setSituacao(String.valueOf(cell.getStringCellValue()));
-                        break;
-                    case 6:
-                        usuario.setCargo(String.valueOf(cell.getStringCellValue()));
-                        break;
-                    case 7:
-                        usuario.setIdFuncionario(String.valueOf(cell.getStringCellValue()));
-                        break;
+                        case 0:
+                            if (cell.getCellType() != Cell.CELL_TYPE_BLANK) {
+                                usuario.setIdUsuario(String.valueOf(cell.getStringCellValue()));
+                                cellHasValue = true;
+                            }
+                            break;
+                        case 1:
+                            if (cell.getCellType() != Cell.CELL_TYPE_BLANK) {
+                                usuario.setNomeUsuario(String.valueOf(cell.getStringCellValue()));
+                                cellHasValue = true;
+                            }
+                            break;
+                        case 2:
+                            if (cell.getCellType() != Cell.CELL_TYPE_BLANK) {
+                                usuario.setEmailUsuario(String.valueOf(cell.getStringCellValue()));
+                                cellHasValue = true;
+                            }
+                            break;
+                        case 3:
+                            if (cell.getCellType() != Cell.CELL_TYPE_BLANK) {
+                                usuario.setLoginUsuario(String.valueOf(cell.getStringCellValue()));
+                                cellHasValue = true;
+                            }
+                            break;
+                        case 4:
+                            if (cell.getCellType() != Cell.CELL_TYPE_BLANK) {
+                                usuario.setSenhaUsuario(String.valueOf(cell.getStringCellValue()));
+                                cellHasValue = true;
+                            }
+                            break;
+                        case 5:
+                            if (cell.getCellType() != Cell.CELL_TYPE_BLANK) {
+                                usuario.setSituacao(String.valueOf(cell.getStringCellValue()));
+                                cellHasValue = true;
+                            }
+                            break;
+                        case 6:
+                            if (cell.getCellType() != Cell.CELL_TYPE_BLANK) {
+                                usuario.setCargo(String.valueOf(cell.getStringCellValue()));
+                                cellHasValue = true;
+                            }
+                            break;
+                        case 7:
+                            if (cell.getCellType() != Cell.CELL_TYPE_BLANK) {
+                                usuario.setIdFuncionario(String.valueOf(cell.getStringCellValue()));
+                                cellHasValue = true;
+                            }
+                            break;
                     }
+                }
+                // Adiciona o usuário apenas se pelo menos uma célula não for nula
+                if (cellHasValue) {
+                    listaUsuarios.add(usuario);
                 }
             }
             arquivo.close();
@@ -82,10 +110,17 @@ public class GerenciadorUsuario {
     public static void verificarQuantidadeUsuarios() throws IOException {
         List<Usuario> listaUsuarios = listarUsuarios();
         
-        if (listaUsuarios.size() == 0) {
+        int quantidadeUsuariosNaoNulos = 0;
+        for (Usuario usuario : listaUsuarios) {
+            if (usuario.getIdUsuario() != null && !usuario.getIdUsuario().isEmpty()) {
+                quantidadeUsuariosNaoNulos++;
+            }
+        }
+
+        if (quantidadeUsuariosNaoNulos == 0) {
             System.out.println("Nenhum usuário encontrado!");
         } else {
-            System.out.println("Número total de usuários: " + listaUsuarios.size());
+            System.out.println("Número total de usuários: " + quantidadeUsuariosNaoNulos);
         }
     }
 
@@ -93,8 +128,9 @@ public class GerenciadorUsuario {
         List<Usuario> listaUsuarios = listarUsuarios();
         
         for (Usuario usuario : listaUsuarios) {
-            System.out.println(usuario.toString());
+            if (usuario.getIdUsuario() != null && !usuario.getIdUsuario().isEmpty()) {
+                System.out.println(usuario.toString());
+            }
         }
     }
-
 }

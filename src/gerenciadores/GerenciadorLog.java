@@ -3,6 +3,7 @@ package gerenciadores;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
@@ -94,9 +95,52 @@ public class GerenciadorLog {
         }
         return "inválido"; // Retorna "inválido" se login ou senha estão incorretos
     }
-    
-    public static boolean armazenaLog(String idLog, Date horarioLogin) {
-    	//CHAMA OUTRO MÉTODO PARA ESCREVER AUTOMATICAMENTE O LOG NO EXCEL.
-    	return true;
+
+    public static void armazenaLog(String idLog, Date horarioLogin) {
+        FileInputStream arquivo = null;
+        FileOutputStream outFile = null;
+        XSSFWorkbook workbook = null;
+
+        try {
+            // Abrir o arquivo Excel
+            arquivo = new FileInputStream(new File(fileName));
+            workbook = new XSSFWorkbook(arquivo);
+            XSSFSheet sheetLogs = workbook.getSheetAt(13);
+
+            // Encontrar a próxima linha disponível
+            int lastRowNum = sheetLogs.getLastRowNum();
+            Row novaLinha = sheetLogs.createRow(lastRowNum + 1);
+
+            // Escrever os dados na nova linha
+            Cell cellIdUsuario = novaLinha.createCell(0);
+            cellIdUsuario.setCellValue(idLog);
+
+            Cell cellHorarioLogin = novaLinha.createCell(1);
+            cellHorarioLogin.setCellValue(horarioLogin);
+
+            // Fechar o FileInputStream
+            arquivo.close();
+
+            // Salvar as mudanças
+            outFile = new FileOutputStream(new File(fileName));
+            workbook.write(outFile);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            System.out.println("Arquivo Excel não encontrado!");
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("Erro ao escrever no arquivo Excel!");
+        } finally {
+            try {
+                if (arquivo != null) {
+                    arquivo.close();
+                }
+                if (outFile != null) {
+                    outFile.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }
