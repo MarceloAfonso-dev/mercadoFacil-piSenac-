@@ -11,35 +11,35 @@ import classes.Usuario;
 public class GerenciadorLogin {
     static SimpleDateFormat formatoData = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
     static private Scanner leitorInterno = new Scanner(System.in);
-    
-    public static String pegarLogin() throws IOException {
-		System.out.println(GerenciadorEmpresa.pegaNome());
+
+    public static Usuario pegarLogin() throws IOException {
+        System.out.println(GerenciadorEmpresa.pegaNome());
         System.out.println("Digite seu login: ");
         String login = leitorInterno.nextLine();
-        
+
         System.out.println("Digite sua senha: ");
         String senha = leitorInterno.nextLine();
-        
+
         try {
             if (validarLogin(login, senha)) {
                 System.out.println("Login bem-sucedido!");
                 Date dataHoraAtual = new Date();
                 GerenciadorLog.armazenaLog(GerenciadorLog.pegaLog(login, senha), dataHoraAtual);
-                return validarCargo(login, senha);
+                return obterUsuario(login, senha);
             } else {
                 System.out.println("Login ou senha incorretos!");
-                return "";
+                return null;
             }
         } catch (IOException e) {
             e.printStackTrace();
             System.out.println("Erro ao validar login.");
-            return "";
+            return null;
         }
     }
-    
+
     private static boolean validarLogin(String login, String senha) throws IOException {
         List<Usuario> listaUsuarios = GerenciadorUsuario.listarUsuarios();
-        
+
         for (Usuario usuario : listaUsuarios) {
             if (usuario.getLoginUsuario().equals(login) && usuario.getSenhaUsuario().equals(senha)) {
                 return true;
@@ -47,16 +47,15 @@ public class GerenciadorLogin {
         }
         return false;
     }
-    
-    private static String validarCargo(String login, String senha) throws IOException {
+
+    private static Usuario obterUsuario(String login, String senha) throws IOException {
         List<Usuario> listaUsuarios = GerenciadorUsuario.listarUsuarios();
-        
+
         for (Usuario usuario : listaUsuarios) {
             if (usuario.getLoginUsuario().equals(login) && usuario.getSenhaUsuario().equals(senha)) {
-                return usuario.getCargo(); // Retorna o cargo se login e senha são válidos
+                return usuario; // Retorna o usuário se login e senha são válidos
             }
         }
-        return "inválido"; // Retorna "inválido" se login ou senha estão incorretos
+        return null; // Retorna null se login ou senha estão incorretos
     }
-    
 }

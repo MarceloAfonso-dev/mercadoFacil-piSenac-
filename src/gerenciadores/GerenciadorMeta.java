@@ -98,4 +98,29 @@ public class GerenciadorMeta {
             System.out.println(meta.toString());
         }
     }
+    
+    public static List<Meta> listarMetasPorIdFuncionario(String idFuncionario) throws IOException {
+        List<Meta> listaMetas = listarMetas();
+        List<Meta> metasFuncionario = new ArrayList<>();
+
+        for (Meta meta : listaMetas) {
+            if (meta.getIdFuncionario().equals(idFuncionario)) {
+                metasFuncionario.add(meta);
+            }
+        }
+
+        return metasFuncionario;
+    }
+
+    public static void imprimirMetasPorIdFuncionario(String idFuncionario) throws IOException {
+        List<Meta> metasFuncionario = listarMetasPorIdFuncionario(idFuncionario);
+
+        if (metasFuncionario.isEmpty()) {
+            System.out.println("Nenhuma meta encontrada para o funcionário com ID: " + idFuncionario);
+        } else {
+            for (Meta meta : metasFuncionario) {
+                System.out.println(meta.toString());
+            }
+        }
+    }
 }
