@@ -111,6 +111,19 @@ public class GerenciadorMeta {
 
         return metasFuncionario;
     }
+    
+    public static void verificarQuantidadeMetasPorIdFuncionario(String idFuncionario) throws IOException {
+        List<Meta> listaMetas = listarMetas();
+        int qtde = 0;
+
+        for (Meta meta : listaMetas) {
+            if (meta.getIdFuncionario().equals(idFuncionario)) {
+                qtde++;
+            }
+        }
+        String mensagem = qtde <= 0 ? "Não há metas para este funcionário" : "Sua quantidade de metas: "+ qtde;
+        System.out.println(mensagem);
+    }
 
     public static void imprimirMetasPorIdFuncionario(String idFuncionario) throws IOException {
         List<Meta> metasFuncionario = listarMetasPorIdFuncionario(idFuncionario);

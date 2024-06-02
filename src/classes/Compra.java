@@ -1,4 +1,5 @@
 package classes;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Compra {
@@ -11,6 +12,8 @@ public class Compra {
 	private double qtdeTotal;
 	private String idFornecedor;
 	private Date previsaoEntrega;
+	
+    private static final SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 	
 	public Compra() { }
 	
@@ -69,13 +72,14 @@ public class Compra {
 		this.previsaoEntrega = previsaoEntrega;
 	}
 
-	@Override
-	public String toString() {
-		return "Compra [idCompra=" + idCompra + ", idProduto=" + idProduto + ", dataSolicitacao=" + dataSolicitacao
-				+ ", valorUnitario=" + valorUnitario + ", tipoUnidade=" + tipoUnidade + ", valorTotal=" + valorTotal
-				+ ", qtdeTotal=" + qtdeTotal + ", idFornecedor=" + idFornecedor + ", previsaoEntrega=" + previsaoEntrega
-				+ "]";
-	}
-	
+    @Override
+    public String toString() {
+        String dataSolicitacaoFormatada = dataSolicitacao != null ? dateFormat.format(dataSolicitacao) : "N/A";
+        String previsaoEntregaFormatada = previsaoEntrega != null ? dateFormat.format(previsaoEntrega) : "N/A";
+        return "Compra [idCompra=" + idCompra + ", idProduto=" + idProduto + ", dataSolicitacao=" + dataSolicitacaoFormatada
+                + ", valorUnitario=" + valorUnitario + ", tipoUnidade=" + tipoUnidade + ", valorTotal=" + valorTotal
+                + ", qtdeTotal=" + qtdeTotal + ", idFornecedor=" + idFornecedor + ", previsaoEntrega=" + previsaoEntregaFormatada
+                + "]";
+    }
 	
 }

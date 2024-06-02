@@ -4,7 +4,7 @@ public class VendaItem {
 	private String idItemVenda;
 	private String idVenda;
 	private String idProduto;
-	private int quantidade;
+	private double quantidade;
 	private double valorItem;
 	
 	public VendaItem() {
@@ -44,11 +44,11 @@ public class VendaItem {
 		this.idProduto = idProduto;
 	}
 
-	public int getQuantidade() {
+	public double getQuantidade() {
 		return quantidade;
 	}
 
-	public void setQuantidade(int quantidade) {
+	public void setQuantidade(double quantidade) {
 		this.quantidade = quantidade;
 	}
 
@@ -59,6 +59,11 @@ public class VendaItem {
 	public void setValorItem(double valorItem) {
 		this.valorItem = valorItem;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "VendaItem [idItemVenda=" + idItemVenda + ", idVenda=" + idVenda + ", idProduto=" + idProduto
+				+ ", quantidade=" + quantidade + ", valorItem=" + valorItem + "]";
+	}
 	
 }

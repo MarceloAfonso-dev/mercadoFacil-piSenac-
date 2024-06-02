@@ -1,9 +1,12 @@
 package classes;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class AcessoUsuario {
 
+    private static final SimpleDateFormat dateTimeFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+	
 	private String idUsuario;
 	private Date horarioLogin;
 	private Date horarioLogoff;
@@ -41,10 +44,11 @@ public class AcessoUsuario {
 		this.horarioLogoff = horarioLogoff;
 	}
 
-	@Override
-	public String toString() {
-		return "AcessoUsuario [idUsuario=" + idUsuario + ", horarioLogin=" + horarioLogin + ", horarioLogoff="
-				+ horarioLogoff + "]";
-	}
-	
+    @Override
+    public String toString() {
+        String horarioLoginFormatado = horarioLogin != null ? dateTimeFormat.format(horarioLogin) : "N/A";
+        String horarioLogoffFormatado = horarioLogoff != null ? dateTimeFormat.format(horarioLogoff) : "N/A";
+        return "AcessoUsuario [idUsuario=" + idUsuario + ", horarioLogin=" + horarioLoginFormatado + ", horarioLogoff="
+                + horarioLogoffFormatado + "]";
+    }
 }

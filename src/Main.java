@@ -4,11 +4,16 @@ import java.util.Scanner;
 import gerenciadores.GerenciadorCliente;
 import gerenciadores.GerenciadorCompra;
 import gerenciadores.GerenciadorEmpresa;
+import gerenciadores.GerenciadorEstoque;
 import gerenciadores.GerenciadorFornecedor;
+import gerenciadores.GerenciadorFuncionario;
+import gerenciadores.GerenciadorLog;
 import gerenciadores.GerenciadorLogin;
 import gerenciadores.GerenciadorMeta;
+import gerenciadores.GerenciadorOferta;
 import gerenciadores.GerenciadorProduto;
 import gerenciadores.GerenciadorUsuario;
+import gerenciadores.GerenciadorVenda;
 import classes.Usuario;
 
 public class Main {
@@ -49,16 +54,11 @@ public class Main {
                     switch (cargo) {
                     case "Caixa" -> {
                         System.out.println("\nOlá caixa");
-                        GerenciadorProduto.imprimirProdutos();
-                        GerenciadorProduto.verificarQuantidadeProdutos();
+                        acoesCaixa(idFuncionario);
                     }
                     case "Gerente" -> {
                         System.out.println("\nOlá gerente");
-                        GerenciadorCliente.imprimirClientes();
-                        GerenciadorCliente.cadastrarCliente();
-                        GerenciadorCliente.imprimirClientes();
-                        //GerenciadorMeta.imprimirMetasGerais();
-                        //GerenciadorMeta.imprimirMetasPorIdFuncionario(idFuncionario);
+                        acoesGerente();
                     }
                     case "Administrador" -> {
                         System.out.println("\nOlá administrador");
@@ -85,6 +85,7 @@ public class Main {
     public static void acoesAdministrador() throws IOException {
         int opcao = 0;
         int opcaoInterna = 0;
+        do {
         System.out.println("""
                 \nEscolha qual item deseja acessar:
                 0. Sair
@@ -92,10 +93,9 @@ public class Main {
                 2. Compra
                 3. Fornecedores
                 4. Empresa
+                5. Logs
                 """);
-        do {
             opcao = leitor.nextInt();
-            leitor.nextLine();
             switch (opcao) {
             case 1 -> {
                 System.out.println("""
@@ -104,7 +104,6 @@ public class Main {
                         2. Exibir todos os usuários
                         """);
                 opcaoInterna = leitor.nextInt();
-                leitor.nextLine();
                 switch (opcaoInterna) {
                 case 1 -> {
                     GerenciadorUsuario.verificarQuantidadeUsuarios();
@@ -124,7 +123,6 @@ public class Main {
                         2. Exibir todos os compras
                         """);
                 opcaoInterna = leitor.nextInt();
-                leitor.nextLine();
                 switch (opcaoInterna) {
                 case 1 -> {
                     GerenciadorCompra.verificarQuantidadeCompras();
@@ -144,7 +142,6 @@ public class Main {
                         2. Exibir todos os fornecedores
                         """);
                 opcaoInterna = leitor.nextInt();
-                leitor.nextLine();
                 switch (opcaoInterna) {
                 case 1 -> {
                 	GerenciadorFornecedor.verificarQuantidadeFornecedores();
@@ -160,17 +157,35 @@ public class Main {
             case 4 -> {
                 System.out.println("""
                         \nSelecione a ação desejada:
-                        1. Consultar quantidade de empresas
-                        2. Exibir todas as empresas
+                        1. Editar dados da empresa
+                        2. Exibir exibir dados da empresas
                         """);
                 opcaoInterna = leitor.nextInt();
-                leitor.nextLine();
                 switch (opcaoInterna) {
                 case 1 -> {
-                    GerenciadorEmpresa.verificaEmpresa();
+                    GerenciadorEmpresa.alterarDados();
                 }
                 case 2 -> {
                     GerenciadorEmpresa.imprimirEmpresa();
+                }
+                default -> {
+                    System.err.println("\nOpção Inválida!\n");
+                }
+                }
+            }
+            case 5 -> {
+                System.out.println("""
+                        \nSelecione a ação desejada:
+                        1. Consultar quantidade de logs
+                        2. Exibir todos os logs
+                        """);
+                opcaoInterna = leitor.nextInt();
+                switch (opcaoInterna) {
+                case 1 -> {
+                    GerenciadorLog.verificarQuantidadeLogs();
+                }
+                case 2 -> {
+                    GerenciadorLog.imprimirLogs();
                 }
                 default -> {
                     System.err.println("\nOpção Inválida!\n");
@@ -187,6 +202,326 @@ public class Main {
         } while (opcao != 0);
     }
 
+    public static void acoesGerente() throws IOException {
+    	int opcao = 0;
+        int opcaoInterna = 0;
+        do {
+        System.out.println("""
+                \nEscolha qual item deseja acessar:
+                0. Sair
+                1. Venda
+                2. Produto
+                3. Funcionarios
+                4. Estoque
+                5. Cliente
+                6. Oferta
+                7. Meta
+                8. Compra
+                9. Usuario
+                """);
+            opcao = leitor.nextInt();
+            switch (opcao) {
+            case 1 -> {
+                System.out.println("""
+                        \nSelecione a ação desejada:
+                        1. Consultar quantidade de vendas
+                        2. Exibir todos as vendas
+                        """);
+                opcaoInterna = leitor.nextInt();
+                switch (opcaoInterna) {
+                case 1 -> {
+                    GerenciadorVenda.verificarQuantidadeVendas();
+                }
+                case 2 -> {
+                    GerenciadorVenda.imprimirVendas();
+                }
+                default -> {
+                    System.err.println("\nOpção Inválida!\n");
+                }
+                }
+            }
+            case 2 -> {
+                System.out.println("""
+                        \nSelecione a ação desejada:
+                        1. Consultar quantidade de produtos
+                        2. Exibir todos os produtos
+                        """);
+                opcaoInterna = leitor.nextInt();
+                switch (opcaoInterna) {
+                case 1 -> {
+                    GerenciadorProduto.verificarQuantidadeProdutos();
+                }
+                case 2 -> {
+                	GerenciadorProduto.imprimirProdutos();
+                }
+                default -> {
+                    System.err.println("\nOpção Inválida!\n");
+                }
+                }
+            }
+            case 3 -> {
+                System.out.println("""
+                        \nSelecione a ação desejada:
+                        1. Consultar quantidade de funcionarios
+                        2. Exibir todos os funcionarios
+                        """);
+                opcaoInterna = leitor.nextInt();
+                switch (opcaoInterna) {
+                case 1 -> {
+                	GerenciadorFuncionario.verificarQuantidadeFuncionarios();
+                }
+                case 2 -> {
+                	GerenciadorFuncionario.imprimirFuncionarios();
+                }
+                default -> {
+                    System.err.println("\nOpção Inválida!\n");
+                }
+                }
+            }
+            case 4 -> {
+                System.out.println("""
+                        \nSelecione a ação desejada:
+                        1. Consultar quantidade de estoque
+                        2. Exibir todos os estoques
+                        """);
+                opcaoInterna = leitor.nextInt();
+                switch (opcaoInterna) {
+                case 1 -> {
+                    GerenciadorEstoque.verificarQuantidadeEstoque();
+                }
+                case 2 -> {
+                	GerenciadorEstoque.imprimirEstoque();
+                }
+                default -> {
+                    System.err.println("\nOpção Inválida!\n");
+                }
+                }
+            }
+            case 5 -> {
+                System.out.println("""
+                        \nSelecione a ação desejada:
+                        1. Consultar quantidade de clientes
+                        2. Exibir todos os clientes
+                        3. Cadastrar um cliente
+                        """);
+                opcaoInterna = leitor.nextInt();
+                switch (opcaoInterna) {
+                case 1 -> {
+                    GerenciadorCliente.verificarQuantidadeClientes();
+                }
+                case 2 -> {
+                	GerenciadorCliente.imprimirClientes();
+                }
+                case 3 -> {
+                	GerenciadorCliente.cadastrarCliente();
+                }
+                default -> {
+                    System.err.println("\nOpção Inválida!\n");
+                }
+                }
+            }
+            case 6 -> {
+                System.out.println("""
+                        \nSelecione a ação desejada:
+                        1. Consultar quantidade de ofertas
+                        2. Exibir todos as ofertas
+                        """);
+                opcaoInterna = leitor.nextInt();
+                switch (opcaoInterna) {
+                case 1 -> {
+                    GerenciadorOferta.verificarQuantidadeOfertas();
+                }
+                case 2 -> {
+                    GerenciadorOferta.imprimirOfertas();
+                }
+                default -> {
+                    System.err.println("\nOpção Inválida!\n");
+                }
+                }
+            }
+            case 7 -> {
+                System.out.println("""
+                        \nSelecione a ação desejada:
+                        1. Consultar quantidade de metas
+                        2. Exibir todos as metas
+                        """);
+                opcaoInterna = leitor.nextInt();
+                switch (opcaoInterna) {
+                case 1 -> {
+                    GerenciadorMeta.verificarQuantidadeGeralMetas();
+                }
+                case 2 -> {
+                    GerenciadorMeta.imprimirMetasGerais();
+                }
+                default -> {
+                    System.err.println("\nOpção Inválida!\n");
+                }
+                }
+            }
+            case 8 -> {
+                System.out.println("""
+                        \nSelecione a ação desejada:
+                        1. Consultar quantidade de compras
+                        2. Exibir todos as compras
+                        """);
+                opcaoInterna = leitor.nextInt();
+                switch (opcaoInterna) {
+                case 1 -> {
+                    GerenciadorCompra.verificarQuantidadeCompras();
+                }
+                case 2 -> {
+                	GerenciadorCompra.imprimirCompras();
+                }
+                default -> {
+                    System.err.println("\nOpção Inválida!\n");
+                }
+                }
+            }
+            case 9 -> {
+                System.out.println("""
+                        \nSelecione a ação desejada:
+                        1. Consultar quantidade de usuarios
+                        2. Exibir todos os usuarios
+                        """);
+                opcaoInterna = leitor.nextInt();
+                switch (opcaoInterna) {
+                case 1 -> {
+                    GerenciadorUsuario.verificarQuantidadeUsuarios();
+                }
+                case 2 -> {
+                	GerenciadorUsuario.imprimirUsuarios();
+                }
+                default -> {
+                    System.err.println("\nOpção Inválida!\n");
+                }
+                }
+            }
+            case 0 -> {
+                System.err.println("\n\nVoltando ao menu principal...\n");
+            }
+            default -> {
+                System.err.println("\nOpção Inválida!\n");
+            }
+            }
+        } while (opcao != 0);
+    }
+    
+    public static void acoesCaixa(String idFuncionario) throws IOException {
+        int opcao = 0;
+        int opcaoInterna = 0;
+        do {
+        System.out.println("""
+                \nEscolha qual item deseja acessar:
+                0. Sair
+                1. Cliente
+                2. Venda
+                3. Oferta
+                4. Meta
+                5. Produto
+                """);
+            opcao = leitor.nextInt();
+            switch (opcao) {
+            case 1 -> {
+                System.out.println("""
+                        \nSelecione a ação desejada:
+                        1. Cadastrar cliente
+                        """);
+                opcaoInterna = leitor.nextInt();
+                switch (opcaoInterna) {
+                case 1 -> {
+                    GerenciadorCliente.cadastrarCliente();
+                }
+                default -> {
+                    System.err.println("\nOpção Inválida!\n");
+                }
+                }
+            }
+            case 2 -> {
+                System.out.println("""
+                        \nSelecione a ação desejada:
+                        1. Iniciar venda
+                        2. Gerar cupom fiscal
+                        """);
+                opcaoInterna = leitor.nextInt();
+                switch (opcaoInterna) {
+                case 1 -> {
+                    GerenciadorVenda.criarVenda();
+                }
+                case 2 -> {
+                    GerenciadorVenda.gerarCupomFiscal();
+                }
+                default -> {
+                    System.err.println("\nOpção Inválida!\n");
+                }
+                }
+            }
+            case 3 -> {
+                System.out.println("""
+                        \nSelecione a ação desejada:
+                        1. Consultar quantidade de ofertas
+                        2. Exibir todas as ofertas
+                        """);
+                opcaoInterna = leitor.nextInt();
+                switch (opcaoInterna) {
+                case 1 -> {
+                	GerenciadorOferta.verificarQuantidadeOfertas();
+                }
+                case 2 -> {
+                	GerenciadorOferta.imprimirOfertas();
+                }
+                default -> {
+                    System.err.println("\nOpção Inválida!\n");
+                }
+                }
+            }
+            case 4 -> {
+                System.out.println("""
+                        \nSelecione a ação desejada:
+                        1. Consultar a quantidade de minhas metas
+                        2. Exibir minhas metas
+                        """);
+                opcaoInterna = leitor.nextInt();
+                switch (opcaoInterna) {
+                case 1 -> {
+                    GerenciadorMeta.verificarQuantidadeMetasPorIdFuncionario(idFuncionario);
+                }
+                case 2 -> {
+                	GerenciadorMeta.imprimirMetasPorIdFuncionario(idFuncionario);
+                }
+                default -> {
+                    System.err.println("\nOpção Inválida!\n");
+                }
+                }
+            }
+            case 5 -> {
+                System.out.println("""
+                        \nSelecione a ação desejada:
+                        1. Consultar quantidade de produtos
+                        2. Exibir todos os produtos
+                        """);
+                opcaoInterna = leitor.nextInt();
+                switch (opcaoInterna) {
+                case 1 -> {
+                    GerenciadorProduto.verificarQuantidadeProdutos();
+                }
+                case 2 -> {
+                	GerenciadorProduto.imprimirProdutos();
+                }
+                default -> {
+                    System.err.println("\nOpção Inválida!\n");
+                }
+                }
+            }
+            case 0 -> {
+                System.err.println("\n\nVoltando ao menu principal...\n");
+            }
+            default -> {
+                System.err.println("\nOpção Inválida!\n");
+            }
+            }
+        } while (opcao != 0);
+    }
+    
     public static void clearConsole() {
     	System.out.println("\n\n\n\n\n");
     }

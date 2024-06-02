@@ -1,5 +1,6 @@
 package classes;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Oferta {
@@ -9,6 +10,8 @@ public class Oferta {
     private int qtdeMinima;
     private double percentualDesconto;
     private String idProduto;
+    
+    private static final SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
     
     public Oferta() { }
 
@@ -71,11 +74,14 @@ public class Oferta {
 		this.idProduto = idProduto;
 	}
 
-	@Override
-	public String toString() {
-		return "Oferta [idOferta=" + idOferta + ", dataCriacao=" + dataCriacao + ", dataFim=" + dataFim
-				+ ", qtdeMinima=" + qtdeMinima + ", percentualDesconto=" + percentualDesconto + ", idProduto="
-				+ idProduto + "]";
-	}
+
+    @Override
+    public String toString() {
+        String dataCriacaoFormatada = dataCriacao != null ? dateFormat.format(dataCriacao) : "N/A";
+        String dataFimFormatada = dataFim != null ? dateFormat.format(dataFim) : "N/A";
+        return "Oferta [idOferta=" + idOferta + ", dataCriacao=" + dataCriacaoFormatada + ", dataFim=" + dataFimFormatada
+                + ", qtdeMinima=" + qtdeMinima + ", percentualDesconto=" + percentualDesconto + ", idProduto="
+                + idProduto + "]";
+    }
     
 }

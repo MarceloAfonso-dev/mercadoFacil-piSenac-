@@ -1,5 +1,6 @@
 package classes;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Cliente {
@@ -11,6 +12,8 @@ public class Cliente {
 	private String idCliente;
 	private Date dataNascimento;
 
+    private static final SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+	
 	public Cliente() {	}
 
 	public Cliente(String nome, String cpf, String cep, String telefone, String idCliente, Date dataNascimento) {
@@ -73,10 +76,10 @@ public class Cliente {
 		this.dataNascimento = dataNascimento;
 	}
 
-	@Override
-	public String toString() {
-		return "Cliente [nome=" + nome + ", cpf=" + cpf + ", cep=" + cep + ", telefone=" + telefone + ", idCliente="
-				+ idCliente + ", dataNascimento=" + dataNascimento + "]";
-	}
-
+    @Override
+    public String toString() {
+        String dataNascimentoFormatada = dataNascimento != null ? dateFormat.format(dataNascimento) : "N/A";
+        return "Cliente [nome=" + nome + ", cpf=" + cpf + ", cep=" + cep + ", telefone=" + telefone + ", idCliente="
+                + idCliente + ", dataNascimento=" + dataNascimentoFormatada + "]";
+    }
 }

@@ -1,5 +1,6 @@
 package classes;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Estoque {
@@ -10,6 +11,8 @@ public class Estoque {
 	private Date dataEntrada;
 	private double custo;
 	
+    private static final SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+
 	public Estoque() {	}
 	
 	public Estoque(String idProduto, double quantidade, String idLote, Date dataValidade, Date dataEntrada,
@@ -71,10 +74,12 @@ public class Estoque {
 		this.custo = custo;
 	}
 
-	@Override
-	public String toString() {
-		return "Estoque [idProduto=" + idProduto + ", quantidade=" + quantidade + ", idLote=" + idLote
-				+ ", dataValidade=" + dataValidade + ", dataEntrada=" + dataEntrada + ", custo=" + custo + "]";
-	}
+    @Override
+    public String toString() {
+        String dataValidadeFormatada = dataValidade != null ? dateFormat.format(dataValidade) : "N/A";
+        String dataEntradaFormatada = dataEntrada != null ? dateFormat.format(dataEntrada) : "N/A";
+        return "Estoque [idProduto=" + idProduto + ", quantidade=" + quantidade + ", idLote=" + idLote
+                + ", dataValidade=" + dataValidadeFormatada + ", dataEntrada=" + dataEntradaFormatada + ", custo=" + custo + "]";
+    }
 	
 }

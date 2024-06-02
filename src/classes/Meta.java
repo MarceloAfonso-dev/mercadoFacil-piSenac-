@@ -1,4 +1,5 @@
 package classes;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Meta {
@@ -12,6 +13,8 @@ public class Meta {
 	private Date dataFinal;
 	private double valorVendas;
 	
+    private static final SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+
 	public Meta() {	}
 	
 	public Meta(String idMeta, double valorMeta, double bonificacao, String idFuncionario, String idCaixa,
@@ -91,11 +94,13 @@ public class Meta {
 		this.valorVendas = valorVendas;
 	}
 
-	@Override
-	public String toString() {
-		return "Meta [idMeta=" + idMeta + ", valorMeta=" + valorMeta + ", bonificacao=" + bonificacao
-				+ ", idFuncionario=" + idFuncionario + ", idCaixa=" + idCaixa + ", dataInicio=" + dataInicio
-				+ ", dataFinal=" + dataFinal + ", valorVendas=" + valorVendas + "]";
-	}
+    @Override
+    public String toString() {
+        String dataInicioFormatada = dataInicio != null ? dateFormat.format(dataInicio) : "N/A";
+        String dataFinalFormatada = dataFinal != null ? dateFormat.format(dataFinal) : "N/A";
+        return "Meta [idMeta=" + idMeta + ", valorMeta=" + valorMeta + ", bonificacao=" + bonificacao
+                + ", idFuncionario=" + idFuncionario + ", idCaixa=" + idCaixa + ", dataInicio=" + dataInicioFormatada
+                + ", dataFinal=" + dataFinalFormatada + ", valorVendas=" + valorVendas + "]";
+    }
 	
 }

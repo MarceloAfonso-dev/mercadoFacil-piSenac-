@@ -1,12 +1,12 @@
 package classes;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class Venda {
 	private String idVenda;
-	private LocalDate data;
-	private LocalTime hora;
+	private Date data;
+	private Date hora;
 	private double valorVenda;
 	private String formaDePagamento;
 	private int parcelas;
@@ -14,12 +14,13 @@ public class Venda {
 	private String idVendedor;
 	private String idCliente;
 	
-	public Venda() {
-		
-	}
+    private static final SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+    private static final SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm:ss");
+	
+	public Venda() {	}
 
-	public Venda(String idVenda, LocalDate data, LocalTime hora, double valorVenda, String formaDePagamento,
-			int parcelas, String observacoes, String idVendedor, String idCliente) {
+	public Venda(String idVenda, Date data, Date hora, double valorVenda, String formaDePagamento, int parcelas,
+			String observacoes, String idVendedor, String idCliente) {
 		super();
 		this.idVenda = idVenda;
 		this.data = data;
@@ -40,19 +41,19 @@ public class Venda {
 		this.idVenda = idVenda;
 	}
 
-	public LocalDate getData() {
+	public Date getData() {
 		return data;
 	}
 
-	public void setData(LocalDate data) {
+	public void setData(Date data) {
 		this.data = data;
 	}
 
-	public LocalTime getHora() {
+	public Date getHora() {
 		return hora;
 	}
 
-	public void setHora(LocalTime hora) {
+	public void setHora(Date hora) {
 		this.hora = hora;
 	}
 
@@ -103,6 +104,14 @@ public class Venda {
 	public void setIdCliente(String idCliente) {
 		this.idCliente = idCliente;
 	}
-	
+
+    @Override
+    public String toString() {
+        String dataFormatada = data != null ? dateFormat.format(data) : "N/A";
+        String horaFormatada = hora != null ? timeFormat.format(hora) : "N/A";
+        return "Venda [idVenda=" + idVenda + ", data=" + dataFormatada + ", hora=" + horaFormatada + ", valorVenda=" + valorVenda
+                + ", formaDePagamento=" + formaDePagamento + ", parcelas=" + parcelas + ", observacoes=" + observacoes
+                + ", idVendedor=" + idVendedor + ", idCliente=" + idCliente + "]";
+    }
 	
 }

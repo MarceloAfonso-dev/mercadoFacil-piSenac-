@@ -67,7 +67,7 @@ public class GerenciadorLog {
         return listaLogs;
     }
 
-    public static void verificarQuantidadeUsuarios() throws IOException {
+    public static void verificarQuantidadeLogs() throws IOException {
         List<AcessoUsuario> listaLogs = listarLogs();
         
         if (listaLogs.size() == 0) {
@@ -77,7 +77,7 @@ public class GerenciadorLog {
         }
     }
 
-    public static void imprimirUsuarios() throws IOException {
+    public static void imprimirLogs() throws IOException {
         List<AcessoUsuario> listaLogs = listarLogs();
         
         for (AcessoUsuario logs : listaLogs) {
