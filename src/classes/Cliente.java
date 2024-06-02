@@ -1,5 +1,6 @@
 package classes;
-import java.time.LocalDate;
+
+import java.util.Date;
 
 public class Cliente {
 
@@ -8,10 +9,21 @@ public class Cliente {
 	private String cep;
 	private String telefone;
 	private String idCliente;
-	private LocalDate dataNascimento;
+	private Date dataNascimento;
 
-	public Cliente() {
+	public Cliente() {	}
+
+	public Cliente(String nome, String cpf, String cep, String telefone, String idCliente, Date dataNascimento) {
+		super();
+		this.nome = nome;
+		this.cpf = cpf;
+		this.cep = cep;
+		this.telefone = telefone;
+		this.idCliente = idCliente;
+		this.dataNascimento = dataNascimento;
 	}
+
+
 
 	public String getNome() {
 		return nome;
@@ -53,12 +65,18 @@ public class Cliente {
 		this.idCliente = idCliente;
 	}
 
-	public LocalDate getDataNascimento() {
+	public Date getDataNascimento() {
 		return dataNascimento;
 	}
 
-	public void setDataNascimento(LocalDate dataNascimento) {
+	public void setDataNascimento(Date dataNascimento) {
 		this.dataNascimento = dataNascimento;
+	}
+
+	@Override
+	public String toString() {
+		return "Cliente [nome=" + nome + ", cpf=" + cpf + ", cep=" + cep + ", telefone=" + telefone + ", idCliente="
+				+ idCliente + ", dataNascimento=" + dataNascimento + "]";
 	}
 
 }

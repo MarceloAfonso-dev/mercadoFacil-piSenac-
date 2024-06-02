@@ -1,6 +1,7 @@
 import java.io.IOException;
 import java.util.Scanner;
 
+import gerenciadores.GerenciadorCliente;
 import gerenciadores.GerenciadorCompra;
 import gerenciadores.GerenciadorEmpresa;
 import gerenciadores.GerenciadorFornecedor;
@@ -53,8 +54,11 @@ public class Main {
                     }
                     case "Gerente" -> {
                         System.out.println("\nOlá gerente");
-                        GerenciadorMeta.imprimirMetasGerais();
-                        GerenciadorMeta.imprimirMetasPorIdFuncionario(idFuncionario);
+                        GerenciadorCliente.imprimirClientes();
+                        GerenciadorCliente.cadastrarCliente();
+                        GerenciadorCliente.imprimirClientes();
+                        //GerenciadorMeta.imprimirMetasGerais();
+                        //GerenciadorMeta.imprimirMetasPorIdFuncionario(idFuncionario);
                     }
                     case "Administrador" -> {
                         System.out.println("\nOlá administrador");
